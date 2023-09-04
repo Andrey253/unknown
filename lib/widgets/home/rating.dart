@@ -13,7 +13,7 @@ class RatingWidget extends StatelessWidget {
       child: BlocBuilder<HomeBloc, HomeState>(
           buildWhen: (previous, current) => current is GetHotelState,
           builder: (context, state) => state is GetHotelState
-              ? ListView(shrinkWrap: true, children: [
+              ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   _rating(state),
                   _adresShort(state),
                   _adresLong(state),

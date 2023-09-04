@@ -13,7 +13,7 @@ class AboutHotelWidget extends StatelessWidget {
       child: BlocBuilder<HomeBloc, HomeState>(
           buildWhen: (previous, current) => current is GetHotelState,
           builder: (context, state) => state is GetHotelState
-              ? ListView(shrinkWrap: true, children: [
+              ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     child: Text(
@@ -44,11 +44,11 @@ class AboutHotelWidget extends StatelessWidget {
                         .toList(),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: Text(
                       state.hotelModel.aboutTheHotel.description,
                       maxLines: 10,
-                      style: TextStyle(
+                      style: const TextStyle(
                           wordSpacing: 4,
                           overflow: TextOverflow.ellipsis,
                           color: Colors.black,
@@ -56,6 +56,11 @@ class AboutHotelWidget extends StatelessWidget {
                           fontWeight: FontWeight.w400),
                     ),
                   ),
+                  ListView.separated(
+                    itemBuilder: (context, index) => Container(),
+                    separatorBuilder: (context, index) => Container(),
+                    itemCount: 3,
+                  )
                 ])
               : const SizedBox.shrink()),
     );
