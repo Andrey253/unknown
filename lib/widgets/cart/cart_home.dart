@@ -3,7 +3,6 @@ import 'package:effective/block/cart_state.dart';
 import 'package:effective/help/widgets.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/cart/box_cart.dart';
 import 'package:effective/widgets/cart/top_cart.dart';
 import 'package:flutter/material.dart';
 
@@ -28,11 +27,11 @@ class CartWidget extends StatelessWidget {
                 backgroundColor: Colors.transparent,
               ),
               backgroundColor: ColorsConst.backGround,
-              body:
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                textMyCart(width),
-                const BoxCart(),
-              ])),
+              body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textMyCart(width),
+                  ])),
         ));
   }
 

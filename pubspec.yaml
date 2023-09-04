@@ -19,6 +19,8 @@ dependencies:
   dio: ^5.3.2
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
+
+  lecle_flutter_carousel_pro: ^0.0.3
   flutter_rating_stars: ^1.0.3+4
   
     #BLoC
@@ -28,6 +30,7 @@ dependencies:
   retrofit: ^4.0.1
   logger: any
   json_annotation: ^4.8.1
+  carousel_animations: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -50,12 +53,9 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-  - family: Mark-Pro
+  - family: SFProDisplay
     fonts:
-      - asset: fonts/Mark-Pro.ttf
-  - family: SFPRODISPLAYREGULAR
-    fonts:
-      - asset: fonts/SFPRODISPLAYREGULAR.OTF
+      - asset: fonts/SF-Pro-Display-Regular.otf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'hotel_model.g.dart';
 
 @JsonSerializable()
-class PostModel {
+class HotelModel {
   int id;
   String name;
   String adress;
@@ -19,7 +19,7 @@ class PostModel {
   @JsonKey(name: 'about_the_hotel')
   AboutTheHotel aboutTheHotel;
 
-  PostModel({
+  HotelModel({
     required this.id,
     required this.name,
     required this.adress,
@@ -31,8 +31,8 @@ class PostModel {
     required this.aboutTheHotel,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> json) =>
-      _$PostModelFromJson(json);
+  factory HotelModel.fromJson(Map<String, dynamic> json) =>
+      _$HotelModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PostModelToJson(this);
+  Map<String, dynamic> toJson() => _$HotelModelToJson(this);
 }

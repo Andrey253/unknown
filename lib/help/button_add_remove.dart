@@ -32,35 +32,21 @@ class ButtonAddRemove extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.remove, color: Colors.white),
-                onPressed: () => block.decrement(index),
+                onPressed: null,
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
-              Text(
-                  (block.repository.cart?.basket?[index]?.quantity ?? 0)
-                      .toString(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: width * 20 / 414,
-                      color: Colors.white)),
+
               IconButton(
                 icon: const Icon(Icons.add, color: Colors.white),
-                onPressed: () => block.increment(index),
+                onPressed: null,
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
             ],
           ),
         ),
-        SizedBox(width: width * 0.04),
-        IconButton(
-          icon: const SvgIcon(
-              color: ColorsConst.deleteIcon,
-              icon: SvgIconData('assets/svg/cart/delete.svg')),
-          onPressed: () => block.remove(index),
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
-        )
+
       ],
     );
   }

@@ -1,12 +1,11 @@
+import 'package:effective/model/hotel_model.dart';
 import 'package:effective/old_model/category.dart';
-import 'package:effective/old_model/filter_params.dart';
 import 'package:effective/old_model/store/store.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();
 }
-
 
 class StartState extends HomeState {
   const StartState();
@@ -36,27 +35,22 @@ class SetCategoryState extends HomeState {
   List<Object> get props => [];
 }
 
-class SelectCityState extends HomeState {
-  final String city;
-  const SelectCityState({
-    required this.city,
+class GetHotelState extends HomeState {
+  final HotelModel  hotel;
+  const GetHotelState({
+    required this.hotel,
   });
 
   @override
-  List<Object> get props => [city];
+  List<Object> get props => [hotel];
 }
 
-class FilterState extends HomeState {
-  const FilterState(this.value);
-  final FilterParams value;
+class ChangeIndexIndicator extends HomeState {
+  final int index;
+  const ChangeIndexIndicator({
+    required this.index,
+  });
 
   @override
-  List<Object> get props => [value];
-}
-
-class CancelFilterState extends HomeState {
-  const CancelFilterState();
-
-  @override
-  List<Object> get props => [];
+  List<Object> get props => [index];
 }

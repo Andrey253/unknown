@@ -21,20 +21,20 @@ class _ApiServis implements ApiServis {
   String? baseUrl;
 
   @override
-  Future<List<PostModel>> getHotel() async {
+  Future<HotelModel> getHotel() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<PostModel>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<HotelModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3',
+              '/v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,9 +43,7 @@ class _ApiServis implements ApiServis {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => PostModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = HotelModel.fromJson(_result.data!);
     return value;
   }
 
@@ -63,7 +61,7 @@ class _ApiServis implements ApiServis {
     )
             .compose(
               _dio.options,
-              'v3/f9a38183-6f95-43aa-853a-9c83cbb05ecd',
+              '/v3/f9a38183-6f95-43aa-853a-9c83cbb05ecd',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -92,7 +90,7 @@ class _ApiServis implements ApiServis {
     )
             .compose(
               _dio.options,
-              'v3/e8868481-743f-4eb2-a0d7-2bc4012275c8',
+              '/v3/e8868481-743f-4eb2-a0d7-2bc4012275c8',
               queryParameters: queryParameters,
               data: _data,
             )

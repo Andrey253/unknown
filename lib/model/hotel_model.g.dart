@@ -6,7 +6,7 @@ part of 'hotel_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
+HotelModel _$HotelModelFromJson(Map<String, dynamic> json) => HotelModel(
       id: json['id'] as int,
       name: json['name'] as String,
       adress: json['adress'] as String,
@@ -21,7 +21,8 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
           json['about_the_hotel'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{
+Map<String, dynamic> _$HotelModelToJson(HotelModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'adress': instance.adress,
