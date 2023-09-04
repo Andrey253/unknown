@@ -45,12 +45,12 @@ class GetHotelState extends HomeState {
   List<Object> get props => [hotelModel];
 }
 
-class ChangeIndexIndicator extends HomeState {
-  final int index;
-  const ChangeIndexIndicator({
-    required this.index,
-  });
+// class ChangeIndexIndicator extends HomeState {
+//   final int index;
+//   const ChangeIndexIndicator({
+//     required this.index,
+//   });
 
-  @override
-  List<Object> get props => [index];
-}
+//   @override
+//   List<Object> get props => [index];
+// }

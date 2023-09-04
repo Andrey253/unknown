@@ -16,8 +16,4 @@ class HomeBloc extends AppBlock<HomeState> {
     emit(GetHotelState(hotelModel: hotel));
   }
 
-  void changeIndexIndicator(int i) async {
-    repository.indexIndicator = i;
-    emit(ChangeIndexIndicator(index: i));
-  }
 }

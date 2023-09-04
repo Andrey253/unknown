@@ -1,29 +1,23 @@
-import 'package:effective/block/home_block.dart';
-import 'package:effective/block/home_state.dart';
+import 'package:effective/model/hotel_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RatingWidget extends StatelessWidget {
-  const RatingWidget({super.key});
+  const RatingWidget({super.key, required this.hotelModel});
+  final HotelModel? hotelModel;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: BlocBuilder<HomeBloc, HomeState>(
-          buildWhen: (previous, current) => current is GetHotelState,
-          builder: (context, state) => state is GetHotelState
-              ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  _rating(state),
-                  _adresShort(state),
-                  _adresLong(state),
-                  _price(state),
-                ])
-              : const SizedBox.shrink()),
-    );
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: hotelModel!=null ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          _rating(hotelModel!),
+          _adresShort(hotelModel!),
+          _adresLong(hotelModel!),
+          _price(hotelModel!),
+        ]): const SizedBox.shrink());
   }
 
-  Widget _rating(GetHotelState state) {
+  Widget _rating(HotelModel hotelModel) {
     return Align(
       alignment: const Alignment(-1, 0),
       child: Container(
@@ -39,27 +33,26 @@ class RatingWidget extends StatelessWidget {
               Icons.star,
               color: Color(0xFFFFA800),
             ),
-            if (state.hotelModel != null)
-              Text(
-                " ${state.hotelModel.rating} ${state.hotelModel.ratingName}",
-                style: const TextStyle(
-                    wordSpacing: 4,
-                    overflow: TextOverflow.ellipsis,
-                    color: Color(0xFFFFA800),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
-              )
+            Text(
+              " ${hotelModel.rating} ${hotelModel.ratingName}",
+              style: const TextStyle(
+                  wordSpacing: 4,
+                  overflow: TextOverflow.ellipsis,
+                  color: Color(0xFFFFA800),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget _adresShort(GetHotelState state) {
+  Widget _adresShort(HotelModel hotelModel) {
     return Padding(
       padding: const EdgeInsets.only(top: 12),
       child: Text(
-        state.hotelModel.adress.split(',').first,
+        hotelModel.adress.split(',').first,
         style: const TextStyle(
             overflow: TextOverflow.ellipsis,
             color: Colors.black,
@@ -69,11 +62,11 @@ class RatingWidget extends StatelessWidget {
     );
   }
 
-  Widget _adresLong(GetHotelState state) {
+  Widget _adresLong(HotelModel hotelModel) {
     return TextButton(
       style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,
-          alignment: Alignment(-1, 0),
+          alignment: const Alignment(-1, 0),
           textStyle: const TextStyle(
               overflow: TextOverflow.ellipsis,
               color: Color(0xFF0D72FF),
@@ -81,20 +74,20 @@ class RatingWidget extends StatelessWidget {
               fontWeight: FontWeight.w500)),
       onPressed: () {},
       child: Text(
-        state.hotelModel.adress,
+        hotelModel.adress,
         textAlign: TextAlign.start,
       ),
     );
   }
 
-  Widget _price(GetHotelState state) {
+  Widget _price(HotelModel hotelModel) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            "от ${state.hotelModel.minimalPrice}",
+            "от ${hotelModel.minimalPrice}",
             style: const TextStyle(
                 textBaseline: TextBaseline.ideographic,
                 overflow: TextOverflow.ellipsis,
@@ -108,7 +101,7 @@ class RatingWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 3),
             child: Text(
-              state.hotelModel.priceForIt,
+              hotelModel.priceForIt,
               style: const TextStyle(
                   textBaseline: TextBaseline.ideographic,
                   overflow: TextOverflow.ellipsis,
