@@ -1,5 +1,6 @@
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/widgets/home/home_one/custom_carousel.dart';
+import 'package:effective/widgets/rooms/rooms_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
@@ -19,36 +20,40 @@ class RoomItemWidget extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MyCustomCarousel(listImages: roomsModel.imageUrls),
-            Text(
-              roomsModel.name,
-              style: const TextStyle(
-                  wordSpacing: 4,
-                  overflow: TextOverflow.ellipsis,
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 10,
-              children: roomsModel.peculiarities
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(
-                          e,
-                          style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              color: Color(0xFF828796),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ))
-                  .toList(),
-            ),
-            Align(
-              alignment: const Alignment(-1, 0),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  roomsModel.name,
+                  style: const TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500),
+                )),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 10,
+                  children: roomsModel.peculiarities
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Text(
+                              e,
+                              style: const TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  color: Color(0xFF828796),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ))
+                      .toList(),
+                )),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -62,7 +67,6 @@ class RoomItemWidget extends StatelessWidget {
                     Text(
                       "Подробнее о номере",
                       style: TextStyle(
-                          wordSpacing: 4,
                           overflow: TextOverflow.ellipsis,
                           color: Color(0xFF0D72FF),
                           fontSize: 16,
@@ -74,7 +78,40 @@ class RoomItemWidget extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    "${roomsModel.price} р",
+                    style: const TextStyle(
+                        textBaseline: TextBaseline.ideographic,
+                        overflow: TextOverflow.ellipsis,
+                        color: Colors.black,
+                        fontSize: 38,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 3),
+                    child: Text(
+                      roomsModel.pricePer,
+                      style: const TextStyle(
+                          textBaseline: TextBaseline.ideographic,
+                          overflow: TextOverflow.ellipsis,
+                          color: Color(0xFF828796),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            RoomsButton(),
           ],
         ),
       ),

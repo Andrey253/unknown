@@ -21,7 +21,7 @@ class HomeButton extends StatelessWidget {
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(34))),
+                        BorderRadius.vertical(bottom: Radius.circular(12))),
                 child: Column(
                   children: [
                     const SizedBox(height: 12),
@@ -44,7 +44,6 @@ class HomeButton extends StatelessWidget {
                             child: const Text(
                               'К выбору номера',
                               style: TextStyle(
-                                  wordSpacing: 4,
                                   overflow: TextOverflow.ellipsis,
                                   color: Colors.white,
                                   fontSize: 16,

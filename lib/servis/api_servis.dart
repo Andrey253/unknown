@@ -14,5 +14,5 @@ abstract class ApiServis {
   @GET('/v3/f9a38183-6f95-43aa-853a-9c83cbb05ecd')
   Future<Rooms> getRooms();
   @GET('/v3/e8868481-743f-4eb2-a0d7-2bc4012275c8')
-  Future<List<RoomModel>> getRoom();
+  Future<RoomModel> getRoom();
 }

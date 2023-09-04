@@ -7,21 +7,21 @@ class RatingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: hotelModel!=null ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          _rating(hotelModel!),
-          _adresShort(hotelModel!),
-          _adresLong(hotelModel!),
-          _price(hotelModel!),
-        ]): const SizedBox.shrink());
+    return hotelModel != null
+        ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            _rating(hotelModel!),
+            _adresShort(hotelModel!),
+            _adresLong(hotelModel!),
+            _price(hotelModel!),
+          ])
+        : const SizedBox.shrink();
   }
 
   Widget _rating(HotelModel hotelModel) {
     return Align(
       alignment: const Alignment(-1, 0),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         decoration: const BoxDecoration(
             color: Color(0x33FFC700),
             borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -36,7 +36,6 @@ class RatingWidget extends StatelessWidget {
             Text(
               " ${hotelModel.rating} ${hotelModel.ratingName}",
               style: const TextStyle(
-                  wordSpacing: 4,
                   overflow: TextOverflow.ellipsis,
                   color: Color(0xFFFFA800),
                   fontSize: 16,

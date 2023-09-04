@@ -21,12 +21,30 @@ class RoomsWidget extends StatelessWidget {
           buildWhen: (previous, current) => current is GetRoomsState,
           builder: (context, state) {
             final listRooms = state is GetRoomsState ? state.listRooms : [];
-            return ListView(
-              children:
-                  listRooms.map((e) => RoomItemWidget(roomsModel: e)).toList(),
-            );
+            return state is StartState
+                ? const Center(child: CircularProgressIndicator())
+                : Column(
+                    children: [
+                      Expanded(
+                        child: ListView(
+                          children: listRooms
+                              .map((e) => RoomItemWidget(roomsModel: e))
+                              .toList(),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Container(
+                        height: 5,
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        decoration: const BoxDecoration(
+                            color: Colors.black,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(2.5))),
+                      ),
+                      const SizedBox(height: 6),
+                    ],
+                  );
           }),
     );
   }
 }
-

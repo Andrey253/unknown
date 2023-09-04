@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/widgets/home/home_one/custom_carousel.dart';
 import 'package:effective/widgets/home/home_one/name_hotel.dart';
 import 'package:effective/widgets/home/home_one/rating.dart';
@@ -17,11 +18,7 @@ class HomeOne extends StatelessWidget {
         buildWhen: (previous, current) => current is GetHotelState,
         builder: (context, state) {
           final hotelModel = state is GetHotelState ? state.hotelModel : null;
-          return Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(12))),
+          return MyContainer(
             child: Column(
               children: [
                 const NameHotel(),

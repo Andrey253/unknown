@@ -11,17 +11,23 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   void startingGetHotel() async {
-      emit(const StartState());
+    emit(const StartState());
     final hotel = await repository.apiServis.getHotel();
     repository.hotelModel = hotel;
     emit(GetHotelState(hotelModel: hotel));
   }
 
   void getRooms() async {
-
     emit(const StartState());
     final rooms = await repository.apiServis.getRooms();
     repository.listRooms = rooms.listRooms;
     emit(GetRoomsState(listRooms: rooms.listRooms));
+  }
+
+  void getRoom() async {
+    emit(const StartState());
+    final roomModel = await repository.apiServis.getRoom();
+    repository.roomModel = roomModel;
+    emit(GetRoomState(roomModel: roomModel));
   }
 }

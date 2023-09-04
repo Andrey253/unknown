@@ -1,4 +1,5 @@
 import 'package:effective/model/hotel_model.dart';
+import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/old_model/category.dart';
 import 'package:effective/old_model/store/store.dart';
@@ -37,6 +38,14 @@ class GetRoomsState extends HomeState {
   final List<RoomsModel> listRooms;
   @override
   List<Object> get props => [listRooms];
+}
+class GetRoomState extends HomeState {
+  const GetRoomState({
+    required this.roomModel,
+  });
+  final RoomModel roomModel;
+  @override
+  List<Object> get props => [roomModel];
 }
 
 class GetHotelState extends HomeState {

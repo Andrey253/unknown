@@ -75,13 +75,13 @@ class _ApiServis implements ApiServis {
   }
 
   @override
-  Future<List<RoomModel>> getRoom() async {
+  Future<RoomModel> getRoom() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<RoomModel>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RoomModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -97,9 +97,7 @@ class _ApiServis implements ApiServis {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => RoomModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = RoomModel.fromJson(_result.data!);
     return value;
   }
 
