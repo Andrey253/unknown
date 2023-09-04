@@ -36,13 +36,13 @@ class SetCategoryState extends HomeState {
 }
 
 class GetHotelState extends HomeState {
-  final HotelModel  hotel;
+  final HotelModel hotelModel;
   const GetHotelState({
-    required this.hotel,
+    required this.hotelModel,
   });
 
   @override
-  List<Object> get props => [hotel];
+  List<Object> get props => [hotelModel];
 }
 
 class ChangeIndexIndicator extends HomeState {

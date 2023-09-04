@@ -13,7 +13,7 @@ class HomeBloc extends AppBlock<HomeState> {
   void startingGetHotel() async {
     final hotel = await repository.apiServis.getHotel();
     repository.hotelModel = hotel;
-    emit(GetHotelState(hotel: hotel));
+    emit(GetHotelState(hotelModel: hotel));
   }
 
   void changeIndexIndicator(int i) async {
