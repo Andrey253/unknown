@@ -3,6 +3,7 @@ import 'package:effective/block/home_state.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/home/home_page.dart';
+import 'package:effective/widgets/rooms/rooms_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,12 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider<HomeBloc>(
+      create: (_) =>
+          HomeBloc(repository: Repository(), type: const StartState()),
+      child: MaterialApp(
         theme: ThemeData(fontFamily: markPro),
-        home: BlocProvider<HomeBloc>(
-          create: (_) =>
-              HomeBloc(repository: Repository(), type: const StartState()),
-          child: const HomePage(),
-        ));
+        home: const HomePage(),
+        routes: {'/rooms': (context) => RoomsWidget()},
+      ),
+    );
   }
 }

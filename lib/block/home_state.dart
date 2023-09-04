@@ -1,4 +1,5 @@
 import 'package:effective/model/hotel_model.dart';
+import 'package:effective/model/rooms_model.dart';
 import 'package:effective/old_model/category.dart';
 import 'package:effective/old_model/store/store.dart';
 import 'package:equatable/equatable.dart';
@@ -29,10 +30,13 @@ class SelectCategoryState extends HomeState {
   List<Object> get props => [listCategory];
 }
 
-class SetCategoryState extends HomeState {
-  const SetCategoryState();
+class GetRoomsState extends HomeState {
+  const GetRoomsState({
+    required this.listRooms,
+  });
+  final List<RoomsModel> listRooms;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [listRooms];
 }
 
 class GetHotelState extends HomeState {
@@ -45,12 +49,3 @@ class GetHotelState extends HomeState {
   List<Object> get props => [hotelModel];
 }
 
-// class ChangeIndexIndicator extends HomeState {
-//   final int index;
-//   const ChangeIndexIndicator({
-//     required this.index,
-//   });
-
-//   @override
-//   List<Object> get props => [index];
-// }
