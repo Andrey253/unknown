@@ -18,10 +18,10 @@ class RatingWidget extends StatelessWidget {
   }
 
   Widget _rating(HotelModel hotelModel) {
-    return Align(
-      alignment: const Alignment(-1, 0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         decoration: const BoxDecoration(
             color: Color(0x33FFC700),
             borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -48,16 +48,13 @@ class RatingWidget extends StatelessWidget {
   }
 
   Widget _adresShort(HotelModel hotelModel) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 12),
-      child: Text(
-        hotelModel.adress.split(',').first,
-        style: const TextStyle(
-            overflow: TextOverflow.ellipsis,
-            color: Colors.black,
-            fontSize: 22,
-            fontWeight: FontWeight.w500),
-      ),
+    return Text(
+      hotelModel.adress.split(',').first,
+      style: const TextStyle(
+          overflow: TextOverflow.ellipsis,
+          color: Colors.black,
+          fontSize: 22,
+          fontWeight: FontWeight.w500),
     );
   }
 

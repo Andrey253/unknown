@@ -1,6 +1,7 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/class_helpers/hotel_menu.dart';
+import 'package:effective/class_helpers/my_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
@@ -13,12 +14,8 @@ class HomeTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+    return MyContainer(
+     
         child: BlocBuilder<HomeBloc, HomeState>(
             buildWhen: (previous, current) => current is GetHotelState,
             builder: (context, state) => state is GetHotelState
@@ -116,7 +113,7 @@ class HomeTwo extends StatelessWidget {
                         )
                       ])
                 : const SizedBox.shrink()),
-      ),
+      
     );
   }
 }

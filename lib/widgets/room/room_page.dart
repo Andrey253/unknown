@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/app_bar.dart';
 import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/source/consts.dart';
@@ -18,27 +19,7 @@ class RoomOrderWidget extends StatelessWidget {
         buildWhen: (previous, current) => current is GetRoomState,
         builder: (context, state) => Scaffold(
               backgroundColor: ColorsConst.backGround,
-              appBar: AppBar(
-                leading: IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: Navigator.of(context).pop,
-                  icon: const SvgIcon(
-                      size: 14,
-                      color: Colors.black,
-                      icon: SvgIconData('assets/svg/toleft.svg')),
-                ),
-                backgroundColor: Colors.white,
-                title: const Center(
-                  child: Text(
-                    "Бронирование",
-                    style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+              appBar: appBar(context, "Бронирование"),
               body: state is GetRoomState
                   ? ListView(children: [
                       MyContainer(
@@ -53,6 +34,8 @@ class RoomOrderWidget extends StatelessWidget {
                   : const SizedBox.shrink(),
             ));
   }
+
+ 
 
   Widget _rating(RoomModel hotelModel) {
     return Align(

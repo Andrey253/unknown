@@ -6,12 +6,15 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: child,
+    return Padding(
+      padding: const EdgeInsets.only(bottom:8.0),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: child,
+      ),
     );
   }
 }

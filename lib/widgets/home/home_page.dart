@@ -24,9 +24,7 @@ class _HomePageState extends State<HomePage> {
         body: ListView(
           children: const <Widget>[
             HomeOne(),
-            SizedBox(height: 12),
             HomeTwo(),
-            SizedBox(height: 12),
             HomeButton(),
           ],
         ),

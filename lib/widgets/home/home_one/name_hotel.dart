@@ -8,7 +8,7 @@ class NameHotel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 16.0),
+      padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Center(
         child: Text('Отель',
             style: TextStyle(

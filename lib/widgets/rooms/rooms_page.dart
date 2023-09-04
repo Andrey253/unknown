@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/app_bar.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/home/home_one/custom_carousel.dart';
@@ -15,13 +16,15 @@ class RoomsWidget extends StatelessWidget {
   static const id = '/rooms';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsConst.backGround,
-      body: BlocBuilder<HomeBloc, HomeState>(
-          buildWhen: (previous, current) => current is GetRoomsState,
-          builder: (context, state) {
-            final listRooms = state is GetRoomsState ? state.listRooms : [];
-            return state is StartState
+    final block = context.read<HomeBloc>();
+    return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) => current is GetRoomsState,
+      builder: (context, state) {
+        List<RoomsModel> listRooms = state is GetRoomsState ? state.listRooms : [];
+        return Scaffold(
+            appBar: appBar(context, block.repository.hotelModel?.adress.split(',').first??''),
+            backgroundColor: ColorsConst.backGround,
+            body: state is StartState
                 ? const Center(child: CircularProgressIndicator())
                 : Column(
                     children: [
@@ -43,8 +46,8 @@ class RoomsWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                     ],
-                  );
-          }),
+                  ));
+      },
     );
   }
 }
