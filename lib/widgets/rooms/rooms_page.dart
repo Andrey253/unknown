@@ -20,9 +20,11 @@ class RoomsWidget extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) => current is GetRoomsState,
       builder: (context, state) {
-        List<RoomsModel> listRooms = state is GetRoomsState ? state.listRooms : [];
+        List<RoomsModel> listRooms =
+            state is GetRoomsState ? state.listRooms : [];
         return Scaffold(
-            appBar: appBar(context, block.repository.hotelModel?.adress.split(',').first??''),
+            appBar: appBar(context,
+                block.repository.hotelModel?.adress.split(',').first ?? ''),
             backgroundColor: ColorsConst.backGround,
             body: state is StartState
                 ? const Center(child: CircularProgressIndicator())

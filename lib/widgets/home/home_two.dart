@@ -14,12 +14,12 @@ class HomeTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return MyContainer(
-     
-        child: BlocBuilder<HomeBloc, HomeState>(
+    return  BlocBuilder<HomeBloc, HomeState>(
             buildWhen: (previous, current) => current is GetHotelState,
             builder: (context, state) => state is GetHotelState
-                ? Column(
+                ?MyContainer(
+     
+        child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                         const Padding(
@@ -112,7 +112,7 @@ class HomeTwo extends StatelessWidget {
                           ),
                         )
                       ])
-                : const SizedBox.shrink()),
+                ): const SizedBox.shrink(),
       
     );
   }
