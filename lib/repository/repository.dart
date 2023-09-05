@@ -3,6 +3,7 @@ import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/servis/api_servis.dart';
+import 'package:flutter/material.dart';
 
 class Repository {
   ApiServis apiServis =
@@ -12,4 +13,5 @@ class Repository {
   List<RoomsModel> listRooms=[];
 
   RoomModel? roomModel;
+   TextEditingController phoneController = TextEditingController();
 }

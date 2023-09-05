@@ -76,15 +76,13 @@ class RatingWidget extends StatelessWidget {
               color: Color(0xFF0D72FF),
               fontSize: 14,
               fontWeight: FontWeight.w500)),
-      onPressed: recurs,
+      onPressed: () {},
       child: Text(
         hotelModel.adress,
         textAlign: TextAlign.start,
       ),
     );
   }
-
-
 
   Widget _price(HotelModel hotelModel) {
     return Padding(
