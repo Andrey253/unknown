@@ -1,4 +1,12 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:effective/model/hotel_model.dart';
+import 'package:effective/widgets/func_test/anagram.dart';
+import 'package:effective/widgets/func_test/preobrObjects.dart';
+import 'package:effective/widgets/func_test/recurs.dart';
+import 'package:effective/widgets/func_test/sglagivanie.dart';
+import 'package:effective/widgets/func_test/srting_to_o.dart';
 import 'package:flutter/material.dart';
 
 class RatingWidget extends StatelessWidget {
@@ -68,13 +76,15 @@ class RatingWidget extends StatelessWidget {
               color: Color(0xFF0D72FF),
               fontSize: 14,
               fontWeight: FontWeight.w500)),
-      onPressed: () {},
+      onPressed: recurs,
       child: Text(
         hotelModel.adress,
         textAlign: TextAlign.start,
       ),
     );
   }
+
+
 
   Widget _price(HotelModel hotelModel) {
     return Padding(
@@ -110,4 +120,20 @@ class RatingWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+List<List<int>> func(List<List<int>> array) {
+  if (array.length < 2) return array;
+  array.sort((a, b) => a[0] - b[0]);
+  var result = [array.removeAt(0)];
+  for (var element in array) {
+    if (result.last.last >= element.first) {
+      result.last[1] = max(result.last.last, element.last);
+    } else {
+      result.add(element);
+    }
+  }
+  print('teg $result');
+
+  return result;
 }

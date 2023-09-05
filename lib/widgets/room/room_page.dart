@@ -2,6 +2,7 @@ import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/class_helpers/app_bar.dart';
 import 'package:effective/class_helpers/my_container.dart';
+import 'package:effective/help/data_order.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +30,12 @@ class RoomOrderWidget extends StatelessWidget {
                             _rating(state.roomModel),
                             _adresShort(state.roomModel),
                             _adresLong(state.roomModel),
-                          ]))
+                          ])),
+                       DataOrdersWidget(roomModel:state.roomModel)
                     ])
                   : const SizedBox.shrink(),
             ));
   }
-
- 
 
   Widget _rating(RoomModel hotelModel) {
     return Align(
@@ -99,3 +99,4 @@ class RoomOrderWidget extends StatelessWidget {
     );
   }
 }
+
