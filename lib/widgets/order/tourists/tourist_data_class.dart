@@ -1,11 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class ExpansionPanelData {
+class TouristData {
   bool isExpanded;
   String headerText;
+
   List<InputField> inputField;
-  ExpansionPanelData({
+  TouristData({
     required this.isExpanded,
     required this.headerText,
     required this.inputField,
@@ -15,10 +16,12 @@ class ExpansionPanelData {
 class InputField {
   TextEditingController textEditingController;
   String nameField;
-
-  String? error;
+  RegExp regExp;
+  bool error;
   InputField({
     required this.textEditingController,
     required this.nameField,
+    required this.regExp,
+    required this.error,
   });
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
+import 'package:effective/widgets/order/final_price.dart';
 import 'package:flutter/material.dart';
 
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/servis/api_servis.dart';
-import 'package:effective/widgets/order/tourists/expansion_class.dart';
+import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 class Repository {
   ApiServis apiServis =
@@ -20,32 +21,46 @@ class Repository {
   String? phoneBuyer;
 
   String? emailBuyer;
-  List<ExpansionPanelData> touristsData = [];
+  List<TouristData> touristsData = [];
+  List<FinalPrice> finalPrices = [];
   Repository() {
     touristsData = [initTourist()];
   }
-  ExpansionPanelData initTourist() {
-    return ExpansionPanelData(
+  TouristData initTourist() {
+    return TouristData(
       isExpanded: true,
       headerText: numberTourist(),
       inputField: [
         InputField(
-            textEditingController: TextEditingController(), nameField: 'Имя'),
-        InputField(
+            regExp: RegExp(r"[a-zA-Zа-яА-Я]{2,20}$", unicode: true),
             textEditingController: TextEditingController(),
-            nameField: 'Фамилия'),
+            nameField: 'Имя',
+            error: false),
         InputField(
+            regExp: RegExp(r"[a-zA-Zа-яА-Я]{2,20}$"),
             textEditingController: TextEditingController(),
-            nameField: 'Дата рождения'),
+            nameField: 'Фамилия',
+            error: false),
         InputField(
+            regExp: RegExp(r"^\d\d\.\d\d\.\d\d\d\d$"),
             textEditingController: TextEditingController(),
-            nameField: 'Гражданство'),
+            nameField: 'Дата рождения',
+            error: false),
         InputField(
+            regExp: RegExp(r"\w{4,20}$"),
             textEditingController: TextEditingController(),
-            nameField: 'Номер загранпаспорта'),
+            nameField: 'Гражданство',
+            error: false),
         InputField(
+            regExp: RegExp(r"\w{6,}$"),
             textEditingController: TextEditingController(),
-            nameField: 'Срок действия загранпаспорта'),
+            nameField: 'Номер загранпаспорта',
+            error: false),
+        InputField(
+            regExp: RegExp(r"^\d\d\.\d\d\.\d\d\d\d$"),
+            textEditingController: TextEditingController(),
+            nameField: 'Срок действия загранпаспорта',
+            error: false),
       ],
     );
   }
@@ -66,9 +81,30 @@ class Repository {
     return numbers[touristsData.length];
   }
 
-  bool addTourist() {
-    if (touristsData.length > 9) return false;
-    touristsData.add(initTourist());
-    return true;
+  TouristData? addTourist() {
+    if (touristsData.length > 9) return null;
+    final tourist = initTourist();
+    touristsData.add(tourist);
+    return tourist;
+  }
+
+  void setFinalPrice() {
+    finalPrices = [
+      FinalPrice('Тур', roomModel?.tourPrice ?? 0, 0),
+      FinalPrice('Топливный сбор', roomModel?.fuelCharge ?? 0, 0),
+      FinalPrice('Сервисный сбор', roomModel?.serviceCharge ?? 0, 0),
+      FinalPrice(
+          'К оплате',
+          roomModel!.tourPrice +
+              roomModel!.serviceCharge +
+              roomModel!.fuelCharge,
+          1),
+    ];
+  }
+
+  void allTouristsNoExpanded() {
+    for (var element in touristsData) {
+      element.isExpanded = false;
+    }
   }
 }

@@ -1,14 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
-
-import 'package:effective/widgets/order/tourists/expansion_class.dart';
+import 'package:effective/widgets/order/final_price.dart';
+import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
-import 'package:effective/old_model/category.dart';
-import 'package:effective/old_model/store/store.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();
@@ -21,20 +17,31 @@ class StartState extends HomeState {
   List<Object> get props => [];
 }
 
-class UpdateStoreState extends HomeState {
-  final Store store;
-  const UpdateStoreState({required this.store});
-
+class AddedTouristState extends HomeState {
+  const AddedTouristState({required this.touristsData});
+  final TouristData touristsData;
   @override
-  List<Object> get props => [store];
+  List<Object> get props => [touristsData];
 }
 
-class AddTouristState extends HomeState {
-  const AddTouristState({required this.created, required this.touristsData});
-  final bool created;
-  final List<ExpansionPanelData> touristsData;
+class AddingTouristState extends HomeState {
+  const AddingTouristState();
   @override
-  List<Object> get props => [created];
+  List<Object> get props => [];
+}
+
+class InputDataTouristState extends HomeState {
+  const InputDataTouristState( {required this.error,required this.inputField,});
+  final bool error;
+  final InputField inputField;
+  @override
+  List<Object> get props => [error,inputField];
+}
+
+class NoAddTouristState extends HomeState {
+  const NoAddTouristState();
+  @override
+  List<Object> get props => [];
 }
 
 class ChangeExpandedtState extends HomeState {
@@ -60,11 +67,13 @@ class GetRoomsState extends HomeState {
 
 class GetRoomState extends HomeState {
   const GetRoomState({
+    required this.finalPrice,
     required this.roomModel,
   });
   final RoomModel roomModel;
+  final List<FinalPrice> finalPrice;
   @override
-  List<Object> get props => [roomModel];
+  List<Object> get props => [roomModel, finalPrice];
 }
 
 class GetHotelState extends HomeState {

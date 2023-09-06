@@ -23,19 +23,7 @@ class AddTouristWidget extends StatelessWidget {
       ),
       IconButton(
         onPressed: block.addTourist,
-        //   bool created = block.addTourist();
-        //   if (!created) {
-        //     showDialog(
-        //         context: context,
-        //         builder: (ctx) => const AlertDialog(
-        //               title: Text('Достигнуто максимальное количество туристов',
-        //                   style: TextStyle(
-        //                       fontWeight: FontWeight.w500,
-        //                       fontSize: 22,
-        //                       color: Colors.black)),
-        //             ));
-        //   }
-        // },
+    
         icon: const Icon(
           Icons.add_box,
           color: Color(0xFF0D72FF),

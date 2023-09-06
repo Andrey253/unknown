@@ -1,5 +1,6 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 class HomeBloc extends AppBlock<HomeState> {
   HomeBloc({required super.repository, required super.type}) {
@@ -28,19 +29,30 @@ class HomeBloc extends AppBlock<HomeState> {
     emit(const StartState());
     final roomModel = await repository.apiServis.getRoom();
     repository.roomModel = roomModel;
-    emit(GetRoomState(roomModel: roomModel));
+    repository.setFinalPrice();
+    emit(
+        GetRoomState(roomModel: roomModel, finalPrice: repository.finalPrices));
   }
 
   addTourist() {
-    final created = repository.addTourist();
-    print('teg addState ${created}');
-    emit(AddTouristState(
-        created: created, touristsData: repository.touristsData));
+    repository.allTouristsNoExpanded();
+    emit(const AddingTouristState());
+    final touristData = repository.addTourist();
+    if (touristData != null) {
+      emit(AddedTouristState(touristsData: touristData));
+    } else {
+      emit(const NoAddTouristState());
+    }
   }
 
   changeEpanded(int panelIndex, bool isExpanded) {
     repository.touristsData[panelIndex].isExpanded = !isExpanded;
-    print('teg ChangeExpandedtState panelIndex $panelIndex');
     emit(ChangeExpandedtState(index: panelIndex, isExp: isExpanded));
+  }
+
+  checkErrorFields(String s, InputField inputField) {
+    final error = inputField.regExp.hasMatch(s);
+    inputField.error = !error;
+    emit(InputDataTouristState(error: !error,inputField:inputField));
   }
 }

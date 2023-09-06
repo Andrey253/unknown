@@ -20,17 +20,19 @@ class ButtonsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(circular),
+    return Center(
+      child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(circular),
+            ),
+            backgroundColor: backgroundColor,
+            minimumSize: Size(width, height), // Set this
+            maximumSize: Size(width, height), // Set this
+            padding: EdgeInsets.zero,
           ),
-          backgroundColor: backgroundColor,
-          minimumSize: Size(width, height), // Set this
-          maximumSize: Size(width, height), // Set this
-          padding: EdgeInsets.zero,
-        ),
-        child: child);
+          child: child),
+    );
   }
 }

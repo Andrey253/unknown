@@ -66,11 +66,10 @@ class _BuyerHotelState extends State<BuyerHotel> {
               filled: true,
               fillColor: const Color(0xFFF6F6F9),
               border: const OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                            color: Color(0xFFA9ABB7),
-                          )),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderSide: BorderSide(
+                    color: Color(0xFFA9ABB7),
+                  )),
             )),
       ),
       Padding(
@@ -78,7 +77,6 @@ class _BuyerHotelState extends State<BuyerHotel> {
         child: TextField(
             style: const TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400),
-            keyboardType: TextInputType.phone,
             controller: emailController,
             onChanged: validateEmail,
             decoration: InputDecoration(
@@ -91,12 +89,11 @@ class _BuyerHotelState extends State<BuyerHotel> {
               labelText: 'Почта',
               filled: true,
               fillColor: const Color(0xFFF6F6F9),
-            border: const OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                            color: Color(0xFFA9ABB7),
-                          )),
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderSide: BorderSide(
+                    color: Color(0xFFA9ABB7),
+                  )),
             )),
       ),
       const Padding(
@@ -155,13 +152,13 @@ class _BuyerHotelState extends State<BuyerHotel> {
   }
 
   void validateEmail(String email) {
-    if ((RegExp(r"^\S+@\S+\.\w{2,}$").hasMatch(email))) {
+    if ((RegExp(r"^[a-zA-Z]+@[a-zA-Z]+\.\w{2,}$").hasMatch(email))) {
       error = null;
       setState(() {});
     } else {
       error = 'Не верный формат Email';
       setState(() {});
     }
-        block.repository.emailBuyer = email;
+    block.repository.emailBuyer = email;
   }
 }

@@ -2,13 +2,15 @@ import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:effective/source/consts.dart';
+import 'package:effective/widgets/end/end_widget.dart';
 import 'package:effective/widgets/home/home_page.dart';
 import 'package:effective/widgets/order/order_page.dart';
 import 'package:effective/widgets/rooms/rooms_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+//На Flutter 3.7.5 ExpansionPanel глючат
+// flutter build apk --split-per-abi
 void main() {
   runApp(const MyApp());
 }
@@ -25,8 +27,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: markPro),
         home: const HomePage(),
         routes: {
-          '/rooms': (context) => RoomsWidget(),
-          '/RoomOrderWidget': (context) => RoomOrderWidget(),
+          '/rooms': (context) => const RoomsWidget(),
+          '/RoomOrderWidget': (context) => const RoomOrderWidget(),
+          '/EndWidget': (context) => const EndWidget(),
         },
       ),
     );
