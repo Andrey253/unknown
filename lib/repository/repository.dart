@@ -32,12 +32,12 @@ class Repository {
       headerText: numberTourist(),
       inputField: [
         InputField(
-            regExp: RegExp(r"[a-zA-Zа-яА-Я]{2,20}$", unicode: true),
+            regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$", unicode: true),
             textEditingController: TextEditingController(),
             nameField: 'Имя',
             error: false),
         InputField(
-            regExp: RegExp(r"[a-zA-Zа-яА-Я]{2,20}$"),
+            regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Фамилия',
             error: false),
@@ -47,7 +47,7 @@ class Repository {
             nameField: 'Дата рождения',
             error: false),
         InputField(
-            regExp: RegExp(r"\w{4,20}$"),
+            regExp: RegExp(r"^[a-zA-Zа-яА-Я]{4,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Гражданство',
             error: false),

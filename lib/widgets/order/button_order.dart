@@ -28,20 +28,7 @@ class ButtonOrderWidget extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.w500),
               ),
-              onPressed: () {
-                List<String> errors = [];
-                block.repository.touristsData.forEach((touristData) {
-                  touristData.inputField.forEach((inputField) {
-                    if (inputField.error) {
-                      errors.add(
-                          '${touristData.headerText} - ${inputField.nameField}');
-                    }
-                  });
-                });
-                print('teg errors ${errors}');
-
-                // Navigator.pushNamed(context, EndWidget.id);
-              }),
+              onPressed: ()=>block.hotelOrder(context)),
           const SizedBox(height: 10),
           Container(
             height: 5,
