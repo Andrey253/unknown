@@ -10,6 +10,7 @@ class TouristWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+        primary: false,
         shrinkWrap: true,
         children: expansionPanelData.inputField
             .map(

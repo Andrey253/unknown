@@ -26,36 +26,33 @@ class _TouristsWidgetState extends State<TouristsWidget> {
   Widget build(BuildContext context) {
     return MyContainer(
         child: BlocBuilder<HomeBloc, HomeState>(
-            buildWhen: (previous, current) => current is AddTouristState,
-            builder: (context, state) {
-              if(state is AddTouristState){
-                print('teg addState ${state.created}');
-                
-              }
-              return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  ExpansionPanelListCustom(
-                    expansionCallback: (panelIndex, isExpanded) => setState(
-                        () => block.repository.touristsData[panelIndex]
-                            .isExpanded = !isExpanded),
-                    children: block.repository.touristsData
-                        .map((e) => ExpansionPanelCustom(
-                            isExpanded: e.isExpanded,
-                            headerBuilder: (context, isExpanded) => Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0),
-                                  child: Text(
-                                    e.headerText,
-                                    style: const TextStyle(
-                                        overflow: TextOverflow.ellipsis,
-                                        color: Colors.black,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w500),
+            buildWhen: (previous, current) => [
+                  ChangeExpandedtState,
+                  AddTouristState
+                ].contains(current.runtimeType),
+            builder: (context, state) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ExpansionPanelListCustom(
+                      expansionCallback: (panelIndex, isExpanded) => block.changeEpanded(panelIndex, isExpanded),
+                      children: block.repository.touristsData
+                          .map((e) => ExpansionPanelCustom(
+                              isExpanded: e.isExpanded,
+                              headerBuilder: (context, isExpanded) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      e.headerText,
+                                      style: const TextStyle(
+                                          overflow: TextOverflow.ellipsis,
+                                          color: Colors.black,
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
-                                ),
-                            body: TouristWidget(expansionPanelData: e)))
-                        .toList(),
-                  ),
-                ]);
-            }));
+                              body: TouristWidget(expansionPanelData: e)))
+                          .toList(),
+                    ),
+                  ])));
   }
 }

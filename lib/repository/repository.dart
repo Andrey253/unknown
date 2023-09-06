@@ -67,7 +67,7 @@ class Repository {
   }
 
   bool addTourist() {
-    if (touristsData.length >= 9) return false;
+    if (touristsData.length > 9) return false;
     touristsData.add(initTourist());
     return true;
   }

@@ -32,6 +32,15 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   addTourist() {
-    emit(AddTouristState(repository.addTourist()));
+    final created = repository.addTourist();
+    print('teg addState ${created}');
+    emit(AddTouristState(
+        created: created, touristsData: repository.touristsData));
+  }
+
+  changeEpanded(int panelIndex, bool isExpanded) {
+    repository.touristsData[panelIndex].isExpanded = !isExpanded;
+    print('teg ChangeExpandedtState panelIndex $panelIndex');
+    emit(ChangeExpandedtState(index: panelIndex, isExp: isExpanded));
   }
 }
