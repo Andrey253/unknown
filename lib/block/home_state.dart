@@ -24,11 +24,11 @@ class UpdateStoreState extends HomeState {
   List<Object> get props => [store];
 }
 
-class SelectCategoryState extends HomeState {
-  const SelectCategoryState(this.listCategory);
-  final List<Category> listCategory;
+class AddTouristState extends HomeState {
+  const AddTouristState(this.created);
+  final bool created;
   @override
-  List<Object> get props => [listCategory];
+  List<Object> get props => [created];
 }
 
 class GetRoomsState extends HomeState {

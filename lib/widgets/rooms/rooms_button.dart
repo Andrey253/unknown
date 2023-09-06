@@ -1,5 +1,5 @@
 import 'package:effective/block/home_block.dart';
-import 'package:effective/widgets/room/room_page.dart';
+import 'package:effective/widgets/order/order_page.dart';
 import 'package:effective/widgets/rooms/rooms_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

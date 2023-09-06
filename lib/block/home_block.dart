@@ -30,4 +30,8 @@ class HomeBloc extends AppBlock<HomeState> {
     repository.roomModel = roomModel;
     emit(GetRoomState(roomModel: roomModel));
   }
+
+  addTourist() {
+    emit(AddTouristState(repository.addTourist()));
+  }
 }

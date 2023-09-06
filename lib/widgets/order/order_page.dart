@@ -5,8 +5,10 @@ import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/help/data_order.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/room/buyer_blok.dart';
-import 'package:effective/widgets/room/hotel_blok.dart';
+import 'package:effective/widgets/order/add_tourist.dart';
+import 'package:effective/widgets/order/buyer_info.dart';
+import 'package:effective/widgets/order/hotel_item.dart';
+import 'package:effective/widgets/order/tourists/tourists_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
@@ -25,8 +27,12 @@ class RoomOrderWidget extends StatelessWidget {
               appBar: appBar(context, "Бронирование"),
               body: state is GetRoomState
                   ? ListView(children: [
+                      const SizedBox(height: 8),
                       BlokHotel(roomModel: state.roomModel),
-                      DataOrdersWidget(roomModel: state.roomModel),BuyerHotel()
+                      DataOrdersWidget(roomModel: state.roomModel),
+                      BuyerHotel(),
+                      TouristsWidget(),
+                      AddTouristWidget()
                     ])
                   : const Center(
                       child: CircularProgressIndicator(),

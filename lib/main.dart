@@ -3,7 +3,7 @@ import 'package:effective/block/home_state.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/home/home_page.dart';
-import 'package:effective/widgets/room/room_page.dart';
+import 'package:effective/widgets/order/order_page.dart';
 import 'package:effective/widgets/rooms/rooms_page.dart';
 
 import 'package:flutter/material.dart';
