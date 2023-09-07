@@ -23,8 +23,6 @@ class HomeBloc extends AppBlock<HomeState> {
   void startingGetHotel() async {
     emit(const StartState());
     final hotel = await repository.apiServis.getHotel();
-    print('teg hotel ${hotel.adress}');
-    
     repository.hotelModel = hotel;
     emit(GetHotelState(hotelModel: hotel));
   }
