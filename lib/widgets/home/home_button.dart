@@ -14,7 +14,8 @@ class HomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
     return BlocBuilder<HomeBloc, HomeState>(
-        buildWhen: (previous, current) => current is GetHotelState,
+        buildWhen: (previous, current) =>
+            current is GetHotelState || current is StartState,
         builder: (context, state) => state is GetHotelState
             ? Container(
                 height: 88,

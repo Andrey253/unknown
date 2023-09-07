@@ -28,11 +28,12 @@ class MyApp extends StatelessWidget {
           HomeBloc(repository: Repository(), type: const StartState()),
       child: MaterialApp(
         theme: HotelTheme.buildLightThemeMy(),
-        home: const HomePage(),
+        // home: const HomePage(),
         routes: {
           '/rooms': (context) => const RoomsWidget(),
           '/RoomOrderWidget': (context) => const RoomOrderWidget(),
           '/EndWidget': (context) => const EndWidget(),
+          '/': (context) => const HomePage(),
         },
       ),
     );

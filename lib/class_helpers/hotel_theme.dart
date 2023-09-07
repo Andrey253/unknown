@@ -5,6 +5,7 @@ class HotelTheme {
   static const buttonBackgroundColor = Color(0xFF0D72FF);
   static const textRaitingColor = Color(0xFFFFA800);
   static const greyColor = Color(0xFFA9ABB7);
+  static const errorColor = Color(0x26EB5757);
   static const labelMedium = TextStyle(
       fontWeight: FontWeight.w500,
       fontSize: 18,

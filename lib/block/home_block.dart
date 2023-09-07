@@ -1,13 +1,10 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/home_state.dart';
-import 'package:effective/class_helpers/buttons_app.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/widgets/end/end_widget.dart';
 import 'package:effective/widgets/order/order_page.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'helper_block.dart';
 
 class HomeBloc extends AppBlock<HomeState> {
@@ -26,6 +23,8 @@ class HomeBloc extends AppBlock<HomeState> {
   void startingGetHotel() async {
     emit(const StartState());
     final hotel = await repository.apiServis.getHotel();
+    print('teg hotel ${hotel.adress}');
+    
     repository.hotelModel = hotel;
     emit(GetHotelState(hotelModel: hotel));
   }
@@ -77,15 +76,15 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   hotelOrder(BuildContext context) {
-    List<List<String>> errors = [];
+     List<List<String>> errors = [];
     if (repository.phoneBuyerController.text.isEmpty) {
       errors.add(['Телефон покупателя', 'не указан']);
-    } else if (repository.phoneBuyerError != null) {
+    } else if (repository.phoneBuyerError) {
       errors.add(['Телефон покупателя', 'указан неверно']);
     }
     if (repository.emailBuyerController.text.isEmpty) {
       errors.add(['Email покупателя', 'не указан']);
-    } else if (repository.emailBuyerError != null) {
+    } else if (repository.emailBuyerError) {
       errors.add(['Email покупателя', 'указан неверно']);
     }
     for (var touristData in repository.touristsData) {
@@ -141,18 +140,18 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   void validateEmailBuyer(String email) {
-    if ((RegExp(r"^[a-zA-Z]+@[a-zA-Z]+\.\w{2,}$").hasMatch(email))) {
-      repository.emailBuyerError = null;
+    if ((RegExp(r"^\w+@\w+\.\w{2,}$").hasMatch(email))) {
+      repository.emailBuyerError = false;
       emit(EditingInfoBuyerState(
           value: email,
-          errorPhone: repository.phoneBuyerError != null,
-          errorEmail: repository.emailBuyerError != null));
+          errorPhone: repository.phoneBuyerError,
+          errorEmail: repository.emailBuyerError));
     } else {
-      repository.emailBuyerError = 'Не верный формат Email';
+      repository.emailBuyerError = true;
       emit(EditingInfoBuyerState(
           value: email,
-          errorPhone: repository.phoneBuyerError != null,
-          errorEmail: repository.emailBuyerError != null));
+          errorPhone: repository.phoneBuyerError,
+          errorEmail: repository.emailBuyerError));
     }
     repository.emailBuyer = email;
   }
@@ -191,17 +190,22 @@ class HomeBloc extends AppBlock<HomeState> {
 
   void validatePhone(String s) {
     if ((RegExp(r"^\d{3}\)\s\d{3}\-\d\d\-\d\d$").hasMatch(s))) {
-      repository.phoneBuyerError = null;
+      repository.phoneBuyerError = false;
       emit(EditingInfoBuyerState(
           value: s,
-          errorPhone: repository.phoneBuyerError != null,
-          errorEmail: repository.emailBuyerError != null));
+          errorPhone: repository.phoneBuyerError,
+          errorEmail: repository.emailBuyerError));
     } else {
-      repository.phoneBuyerError = 'Не верный формат телефона';
+      repository.phoneBuyerError = true;
       emit(EditingInfoBuyerState(
           value: s,
-          errorPhone: repository.phoneBuyerError != null,
-          errorEmail: repository.emailBuyerError != null));
+          errorPhone: repository.phoneBuyerError,
+          errorEmail: repository.emailBuyerError));
     }
+  }
+
+  finish(BuildContext context)  {
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+    startingGetHotel();
   }
 }

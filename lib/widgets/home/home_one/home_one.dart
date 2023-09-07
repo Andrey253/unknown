@@ -15,7 +15,7 @@ class HomeOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
-        buildWhen: (previous, current) => current is GetHotelState,
+        buildWhen: (previous, current) => current is GetHotelState ||current is StartState, 
         builder: (context, state) {
           final hotelModel = state is GetHotelState ? state.hotelModel : null;
           return MyContainer(

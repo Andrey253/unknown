@@ -14,7 +14,7 @@ class HomeTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return BlocBuilder<HomeBloc, HomeState>(
-      buildWhen: (previous, current) => current is GetHotelState,
+      buildWhen: (previous, current) => current is GetHotelState||current is StartState,
       builder: (context, state) => state is GetHotelState
           ? MyContainer(
               child: Column(

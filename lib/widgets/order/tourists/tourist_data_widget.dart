@@ -29,12 +29,11 @@ class TouristDataWidget extends StatelessWidget {
                         controller: e.textEditingController,
                         onChanged: (s) => block.checkErrorFields(s, e),
                         decoration: InputDecoration(
-                          errorText: e.error ? '' : null,
                           errorStyle: HotelTheme.textStyle16_400Grey,
                           labelText: e.nameField,
                           hintText: e.hintText,
                           filled: true,
-                          fillColor: HotelTheme.scaffoldBackgroundColor,
+                          fillColor:e.error?HotelTheme.errorColor: HotelTheme.scaffoldBackgroundColor,
                           border: const OutlineInputBorder(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10.0)),
