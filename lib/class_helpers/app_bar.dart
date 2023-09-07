@@ -1,3 +1,4 @@
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
@@ -16,11 +17,7 @@ AppBar appBar(BuildContext context, String title) {
       alignment: const Alignment(-0.25, 1),
       child: Text(
         title,
-        style: const TextStyle(
-            overflow: TextOverflow.ellipsis,
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w500),
+        style: HotelTheme.labelMedium,
       ),
     ),
   );

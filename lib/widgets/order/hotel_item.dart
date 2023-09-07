@@ -1,3 +1,4 @@
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class BlokHotel extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: const BoxDecoration(
-            color: Color(0x33FFC700),
+            // color: Color(0x33FFC700),
             borderRadius: BorderRadius.all(Radius.circular(5))),
         clipBehavior: Clip.hardEdge,
         child: Row(
@@ -31,15 +32,11 @@ class BlokHotel extends StatelessWidget {
           children: [
             const Icon(
               Icons.star,
-              color: Color(0xFFFFA800),
+              color: HotelTheme.textRaitingColor,
             ),
             Text(
               " ${hotelModel.horating} ${hotelModel.ratingName}",
-              style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  color: Color(0xFFFFA800),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
+              style: HotelTheme.textStyleRaiting,
             )
           ],
         ),
@@ -68,7 +65,7 @@ class BlokHotel extends StatelessWidget {
           alignment: const Alignment(-1, 0),
           textStyle: const TextStyle(
               overflow: TextOverflow.ellipsis,
-              color: Color(0xFF0D72FF),
+              color: HotelTheme.buttonBackgroundColor,
               fontSize: 14,
               fontWeight: FontWeight.w500)),
       onPressed: () {},

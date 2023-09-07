@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_widget.dart';
 import 'package:effective/widgets/order/tourists/custom/list_panel.dart';
@@ -28,13 +29,8 @@ class _TouristsWidgetState extends State<TouristsWidget> {
             buildWhen: (previous, current) => [
                   ChangeExpandedtState,
                   AddedTouristState,
-                  NoAddTouristState
                 ].contains(current.runtimeType),
-            builder: (context, state) {
-              if (state is NoAddTouristState) {
-                _showdialod(context);
-              }
-              return Column(
+            builder: (context, state) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ExpansionPanelListCustom(
@@ -58,21 +54,8 @@ class _TouristsWidgetState extends State<TouristsWidget> {
                               body: TouristDataWidget(expansionPanelData: e)))
                           .toList(),
                     ),
-                  ]);
-            }));
+                  ])));
   }
 
-  Future _showdialod(BuildContext context) async {
-    await Future.delayed(Duration.zero);
-    // ignore: use_build_context_synchronously
-    showDialog(
-        context: context,
-        builder: (ctx) => const AlertDialog(
-              title: Text('Достигнуто максимальное количество туристов',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 22,
-                      color: Colors.black)),
-            ));
-  }
+
 }

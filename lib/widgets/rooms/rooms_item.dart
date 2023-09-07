@@ -1,3 +1,4 @@
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/widgets/home/home_one/custom_carousel.dart';
@@ -18,7 +19,7 @@ class RoomItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyCustomCarousel(listImages: roomsModel.imageUrls),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 6),
             child: Text(
@@ -31,7 +32,7 @@ class RoomItemWidget extends StatelessWidget {
             ),
           ),
           Padding(
-              padding: EdgeInsets.symmetric(vertical: 6),
+              padding: const EdgeInsets.symmetric(vertical: 6),
               child: Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 10,
@@ -40,11 +41,7 @@ class RoomItemWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Text(
                             e,
-                            style: const TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                color: Color(0xFF828796),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
+                            style: HotelTheme.textStyle16_500Grey,
                           ),
                         ))
                     .toList(),
@@ -57,26 +54,26 @@ class RoomItemWidget extends StatelessWidget {
                   color: Color.fromRGBO(13, 114, 255, 0.10),
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               clipBehavior: Clip.hardEdge,
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children:  [
                   Text(
                     "Подробнее о номере",
                     style: TextStyle(
                         overflow: TextOverflow.ellipsis,
-                        color: Color(0xFF0D72FF),
+                        color:  HotelTheme.buttonBackgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
                   SvgIcon(
-                      color: Color(0xFF0D72FF),
+                      color: HotelTheme.buttonBackgroundColor,
                       icon: SvgIconData('assets/svg/toright.svg'))
                 ],
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -96,18 +93,14 @@ class RoomItemWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 3),
                   child: Text(
                     roomsModel.pricePer,
-                    style: const TextStyle(
-                        textBaseline: TextBaseline.ideographic,
-                        overflow: TextOverflow.ellipsis,
-                        color: Color(0xFF828796),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
+                    style: HotelTheme.textStyle16_400Grey,
                   ),
                 ),
               ],
             ),
           ),
-          RoomsButton(),
+          const SizedBox(height: 12),
+          const RoomsButton(),
         ],
       ),
     );

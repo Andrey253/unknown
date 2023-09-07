@@ -12,6 +12,7 @@ class MyCustomCarousel extends StatelessWidget {
     int indexIndicator = 0;
     GlobalKey gkey = GlobalKey();
     void changeIndicator(int value) {
+      // ignore: invalid_use_of_protected_member
       gkey.currentState?.setState(() {
         indexIndicator = value;
       });

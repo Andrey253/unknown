@@ -1,12 +1,6 @@
-import 'dart:convert';
 import 'dart:math';
-
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/model/hotel_model.dart';
-import 'package:effective/widgets/func_test/anagram.dart';
-import 'package:effective/widgets/func_test/preobrObjects.dart';
-import 'package:effective/widgets/func_test/recurs.dart';
-import 'package:effective/widgets/func_test/sglagivanie.dart';
-import 'package:effective/widgets/func_test/srting_to_o.dart';
 import 'package:flutter/material.dart';
 
 class RatingWidget extends StatelessWidget {
@@ -43,11 +37,7 @@ class RatingWidget extends StatelessWidget {
             ),
             Text(
               " ${hotelModel.rating} ${hotelModel.ratingName}",
-              style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  color: Color(0xFFFFA800),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
+              style: HotelTheme.textStyleRaiting,
             )
           ],
         ),
@@ -71,11 +61,7 @@ class RatingWidget extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,
           alignment: const Alignment(-1, 0),
-          textStyle: const TextStyle(
-              overflow: TextOverflow.ellipsis,
-              color: Color(0xFF0D72FF),
-              fontSize: 14,
-              fontWeight: FontWeight.w500)),
+          textStyle: HotelTheme.blueAdress),
       onPressed: () {},
       child: Text(
         hotelModel.adress,
@@ -106,12 +92,7 @@ class RatingWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 3),
             child: Text(
               hotelModel.priceForIt,
-              style: const TextStyle(
-                  textBaseline: TextBaseline.ideographic,
-                  overflow: TextOverflow.ellipsis,
-                  color: Color(0xFF828796),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400),
+              style: HotelTheme.textStyle16_400Grey,
             ),
           ),
         ],

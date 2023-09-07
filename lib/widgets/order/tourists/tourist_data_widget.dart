@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,20 +29,17 @@ class TouristDataWidget extends StatelessWidget {
                         controller: e.textEditingController,
                         onChanged: (s) => block.checkErrorFields(s, e),
                         decoration: InputDecoration(
-                          errorText: e.error?'':null,
-                          errorStyle: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              color: Color(0xFF828796),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400),
+                          errorText: e.error ? '' : null,
+                          errorStyle: HotelTheme.textStyle16_400Grey,
                           labelText: e.nameField,
+                          hintText: e.hintText,
                           filled: true,
-                          fillColor: const Color(0xFFF6F6F9),
+                          fillColor: HotelTheme.scaffoldBackgroundColor,
                           border: const OutlineInputBorder(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10.0)),
                               borderSide: BorderSide(
-                                color: Color(0xFFA9ABB7),
+                                color: HotelTheme.greyColor,
                               )),
                         )),
                   ),

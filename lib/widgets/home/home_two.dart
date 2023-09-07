@@ -1,6 +1,7 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/class_helpers/hotel_menu.dart';
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/class_helpers/my_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,11 +24,7 @@ class HomeTwo extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     child: Text(
                       "Об отеле",
-                      style: TextStyle(
-                          overflow: TextOverflow.ellipsis,
-                          color: Colors.black,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500),
+                      style: HotelTheme.textStyle22_500Black,
                     ),
                   ),
                   Wrap(
@@ -38,11 +35,7 @@ class HomeTwo extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text(
                                 e,
-                                style: const TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Color(0xFF828796),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
+                                style: HotelTheme.textStyle16_500Grey,
                               ),
                             ))
                         .toList(),
@@ -52,11 +45,7 @@ class HomeTwo extends StatelessWidget {
                     child: Text(
                       state.hotelModel.aboutTheHotel.description,
                       maxLines: 10,
-                      style: const TextStyle(
-                          overflow: TextOverflow.ellipsis,
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
+                      style: HotelTheme.textStyle16_400Grey,
                     ),
                   ),
                   Container(
@@ -70,19 +59,11 @@ class HomeTwo extends StatelessWidget {
                         onTap: () {},
                         title: Text(
                           menuHotel[index].name,
-                          style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                          style: HotelTheme.textStyle16_500Black,
                         ),
                         subtitle: Text(
                           menuHotel[index].comment,
-                          style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              color: Color(0xFF828796),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
+                          style: HotelTheme.textStyle14_500Grey,
                         ),
                         leading: SvgIcon(
                             size: 24,

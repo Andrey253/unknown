@@ -1,10 +1,11 @@
-import 'package:effective/widgets/order/final_price.dart';
-import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
+import 'package:effective/widgets/order/final_price.dart';
+import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();
@@ -31,18 +32,21 @@ class AddingTouristState extends HomeState {
 }
 
 class InputDataTouristState extends HomeState {
-  const InputDataTouristState( {required this.error,required this.inputField,});
+  const InputDataTouristState({
+    required this.error,
+    required this.inputField,
+  });
   final bool error;
   final InputField inputField;
   @override
-  List<Object> get props => [error,inputField];
+  List<Object> get props => [error, inputField];
 }
 
-class NoAddTouristState extends HomeState {
-  const NoAddTouristState();
-  @override
-  List<Object> get props => [];
-}
+// class NoAddTouristState extends HomeState {
+//   const NoAddTouristState();
+//   @override
+//   List<Object> get props => [];
+// }
 
 class ChangeExpandedtState extends HomeState {
   final int index;
@@ -84,4 +88,18 @@ class GetHotelState extends HomeState {
 
   @override
   List<Object> get props => [hotelModel];
+}
+
+class EditingInfoBuyerState extends HomeState {
+  final String value;
+  final bool errorPhone;
+  final bool errorEmail;
+  const EditingInfoBuyerState({
+    required this.value,
+    required this.errorPhone,
+    required this.errorEmail,
+  });
+
+  @override
+  List<Object> get props => [value, errorEmail, errorPhone];
 }

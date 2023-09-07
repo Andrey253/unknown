@@ -1,10 +1,7 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/class_helpers/app_bar.dart';
-import 'package:effective/class_helpers/my_container.dart';
 import 'package:effective/class_helpers/data_order.dart';
-import 'package:effective/model/room_model.dart';
-import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/order/add_tourist.dart';
 import 'package:effective/widgets/order/button_order.dart';
 import 'package:effective/widgets/order/buyer_info.dart';
@@ -13,7 +10,6 @@ import 'package:effective/widgets/order/hotel_item.dart';
 import 'package:effective/widgets/order/tourists/tourists_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 class RoomOrderWidget extends StatelessWidget {
   const RoomOrderWidget({super.key});
@@ -25,7 +21,6 @@ class RoomOrderWidget extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) => current is GetRoomState,
         builder: (context, state) => Scaffold(
-              backgroundColor: ColorsConst.backGround,
               appBar: appBar(context, "Бронирование"),
               body: state is GetRoomState
                   ? ListView(children: [
@@ -35,7 +30,10 @@ class RoomOrderWidget extends StatelessWidget {
                       const BuyerHotel(),
                       const TouristsWidget(),
                       const AddTouristWidget(),
-                      FinalPriceWidget(roomModel: state.roomModel,finalPrice: state.finalPrice,),
+                      FinalPriceWidget(
+                        roomModel: state.roomModel,
+                        finalPrice: state.finalPrice,
+                      ),
                       const ButtonOrderWidget()
                     ])
                   : const Center(

@@ -2,8 +2,6 @@ import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/class_helpers/app_bar.dart';
 import 'package:effective/model/rooms_model.dart';
-import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/home/home_one/custom_carousel.dart';
 import 'package:effective/widgets/rooms/rooms_item.dart';
 
 import 'package:flutter/material.dart';
@@ -25,7 +23,6 @@ class RoomsWidget extends StatelessWidget {
         return Scaffold(
             appBar: appBar(context,
                 block.repository.hotelModel?.adress.split(',').first ?? ''),
-            backgroundColor: ColorsConst.backGround,
             body: state is StartState
                 ? const Center(child: CircularProgressIndicator())
                 : Column(

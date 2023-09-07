@@ -1,5 +1,6 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/widgets/rooms/rooms_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,11 +44,7 @@ class HomeButton extends StatelessWidget {
                             },
                             child: const Text(
                               'К выбору номера',
-                              style: TextStyle(
-                                  overflow: TextOverflow.ellipsis,
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
+                              style: HotelTheme.textStyle16_500White,
                             ),
                           ),
                         ),

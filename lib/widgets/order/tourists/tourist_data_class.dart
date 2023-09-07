@@ -18,10 +18,13 @@ class InputField {
   String nameField;
   RegExp regExp;
   bool error;
+
+  String hintText;
   InputField({
     required this.textEditingController,
     required this.nameField,
     required this.regExp,
     required this.error,
+    required this.hintText,
   });
 }

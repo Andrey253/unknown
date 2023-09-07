@@ -1,3 +1,4 @@
+import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 
 class NameHotel extends StatelessWidget {
@@ -11,10 +12,7 @@ class NameHotel extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Center(
         child: Text('Отель',
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-                color: Colors.black)),
+            style: HotelTheme.labelMedium),
       ),
     );
   }
