@@ -14,16 +14,16 @@ class TestTouristsWidget extends StatefulWidget {
 }
 
 class _TestTouristsWidgetState extends State<TestTouristsWidget> {
-  late HomeBloc block;
+  late AppBlock block;
   @override
   void initState() {
-    block = context.read<HomeBloc>();
+    block = context.read<AppBlock>();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<AppBlock, AppState>(
         buildWhen: (previous, current) => [
               ChangeExpandedtState,
               AddedTouristState,
@@ -46,8 +46,8 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
                       MyContainer(
                         padding: 6.0,
                         child: ExpansionPanelListCustom(
-                            expansionCallback: (panelIndex, isExpanded) =>
-                                block.changeEpanded(index, isExpanded),
+                            expansionCallback: (panelIndex, isExpanded) => block
+                                .changeEpandedListTourist(index, isExpanded),
                             children: [
                               ExpansionPanelCustom(
                                   isExpanded: list[index].isExpanded,

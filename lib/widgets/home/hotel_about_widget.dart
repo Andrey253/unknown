@@ -13,8 +13,8 @@ class HomeTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final block = context.read<HomeBloc>();
-    return BlocBuilder<HomeBloc, HomeState>(
+    final block = context.read<AppBlock>();
+    return BlocBuilder<AppBlock, AppState>(
       // buildWhen: (previous, current) => current is GetHotelState||current is StartState,
       builder: (context, state) => block.repository.hotelModel == null ||
               state is StartState

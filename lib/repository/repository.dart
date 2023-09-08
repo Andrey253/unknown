@@ -28,6 +28,8 @@ class Repository {
 
   bool emailBuyerError = true;
   bool phoneBuyerError = true;
+  
+  int maxTourists = 9;
 
   Repository() {
     touristsData = [initTourist()];
@@ -94,7 +96,7 @@ class Repository {
   }
 
   TouristData? addTourist() {
-    if (touristsData.length > 9) return null;
+    if (touristsData.length > maxTourists) return null;
     final tourist = initTourist();
     touristsData.add(tourist);
     return tourist;

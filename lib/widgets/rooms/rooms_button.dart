@@ -11,14 +11,14 @@ class RoomsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
+    final block = context.read<AppBlock>();
     return ButtonsApp(
         width: MediaQuery.of(context).size.width * 0.9,
         height: 48,
         circular: 14,
         backgroundColor: HotelTheme.buttonBackgroundColor,
-        child: const Text('Выбрать номер',
-            style: HotelTheme.textStyle16_500White),
+        child:
+            const Text('Выбрать номер', style: HotelTheme.textStyle16_500White),
         onPressed: () => block.getRoomAndNavigate(context));
   }
 }

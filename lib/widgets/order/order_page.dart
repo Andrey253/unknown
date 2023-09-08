@@ -18,7 +18,7 @@ class RoomOrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<AppBlock, AppState>(
         buildWhen: (previous, current) => current is GetRoomState,
         builder: (context, state) => Scaffold(
               appBar: appBar(context, "Бронирование"),

@@ -14,8 +14,9 @@ class FinalPriceWidget extends StatelessWidget {
   final List<FinalPrice> finalPrice;
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
-    return MyContainer(padding: 16.0,
+    final block = context.read<AppBlock>();
+    return MyContainer(
+        padding: 16.0,
         child: Column(
             children: finalPrice
                 .map((e) => _row(e, block.spaceSeparateNumbers(e.price)))

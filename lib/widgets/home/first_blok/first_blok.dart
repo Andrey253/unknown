@@ -14,10 +14,10 @@ class HomeOne extends StatelessWidget {
   // final List<String>? listImages;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<AppBlock, AppState>(
         // buildWhen: (previous, current) => current is GetHotelState ||current is StartState,
         builder: (context, state) {
-      final hotelModel = context.read<HomeBloc>().repository.hotelModel;
+      final hotelModel = context.read<AppBlock>().repository.hotelModel;
       return MyContainer(
         padding: 16.0,
         child: Column(
@@ -25,7 +25,7 @@ class HomeOne extends StatelessWidget {
             const NameHotel(),
             MyCustomCarousel(
                 listImages: state is StartState ? null : hotelModel?.imageUrls),
-            RatingWidget(hotelModel:state is StartState ? null : hotelModel)
+            RatingWidget(hotelModel: state is StartState ? null : hotelModel)
           ],
         ),
       );

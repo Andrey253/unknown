@@ -12,8 +12,8 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
-    return BlocBuilder<HomeBloc, HomeState>(
+    final block = context.read<AppBlock>();
+    return BlocBuilder<AppBlock, AppState>(
         builder: (context, state) => block.repository.hotelModel == null ||
                 state is StartState
             ? const SizedBox.shrink()

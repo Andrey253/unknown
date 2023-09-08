@@ -11,9 +11,9 @@ import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 import 'block_help.dart';
 
-class HomeBloc extends Cubit<HomeState> {
+class AppBlock extends Cubit<AppState> {
   final Repository repository;
-  HomeBloc({
+  AppBlock({
     required this.repository,
   }) : super(const StartState()) {
     startingGetHotel();
@@ -22,7 +22,6 @@ class HomeBloc extends Cubit<HomeState> {
   get finalPrice => spaceSeparateNumbers(repository.finalPrices.last.price);
 
   String spaceSeparateNumbers(s) => spaceSeparateNumbersHelp(s);
-
 
   void startingGetHotel() async {
     emit(const StartState());
@@ -66,12 +65,12 @@ class HomeBloc extends Cubit<HomeState> {
     }
   }
 
-  changeEpanded(int panelIndex, bool isExpanded) {
+  changeEpandedListTourist(int panelIndex, bool isExpanded) {
     repository.touristsData[panelIndex].isExpanded = !isExpanded;
     emit(ChangeExpandedtState(index: panelIndex, isExp: isExpanded));
   }
 
-  checkErrorFields(String s, InputField inputField) {
+  checkErrorTouristFields(String s, InputField inputField) {
     final error = !inputField.regExp.hasMatch(s);
     inputField.error = error;
     emit(InputDataTouristState(error: error, inputField: inputField));

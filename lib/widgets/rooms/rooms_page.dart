@@ -14,8 +14,8 @@ class RoomsWidget extends StatelessWidget {
   static const id = '/rooms';
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
-    return BlocBuilder<HomeBloc, HomeState>(
+    final block = context.read<AppBlock>();
+    return BlocBuilder<AppBlock, AppState>(
       buildWhen: (previous, current) => current is GetRoomsState,
       builder: (context, state) {
         List<RoomsModel> listRooms =

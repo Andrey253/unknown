@@ -11,7 +11,7 @@ class FinishWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
+    final block = context.read<AppBlock>();
     return WillPopScope(
       onWillPop: () async {
         block.finish(context);

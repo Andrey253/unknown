@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomeBloc>(
-      create: (_) => HomeBloc(repository: Repository()),
+    return BlocProvider<AppBlock>(
+      create: (_) => AppBlock(repository: Repository()),
       child: MaterialApp(
         theme: HotelTheme.buildLightThemeMy(),
         // home: const HomePage(),

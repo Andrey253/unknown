@@ -11,8 +11,8 @@ class TouristDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
-    return BlocBuilder<HomeBloc, HomeState>(
+    final block = context.read<AppBlock>();
+    return BlocBuilder<AppBlock, AppState>(
         buildWhen: (previous, current) => current is InputDataTouristState,
         builder: (context, state) => ListView(
             primary: false,
@@ -27,13 +27,15 @@ class TouristDataWidget extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w400),
                         controller: e.textEditingController,
-                        onChanged: (s) => block.checkErrorFields(s, e),
+                        onChanged: (s) => block.checkErrorTouristFields(s, e),
                         decoration: InputDecoration(
                           errorStyle: HotelTheme.textStyle16_400Grey,
                           labelText: e.nameField,
                           hintText: e.hintText,
                           filled: true,
-                          fillColor:e.error?HotelTheme.errorColor: HotelTheme.scaffoldBackgroundColor,
+                          fillColor: e.error
+                              ? HotelTheme.errorColor
+                              : HotelTheme.scaffoldBackgroundColor,
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0)),

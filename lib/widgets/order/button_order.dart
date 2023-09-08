@@ -9,7 +9,7 @@ class ButtonOrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<HomeBloc>();
+    final block = context.read<AppBlock>();
 
     return Column(
       children: [

@@ -7,31 +7,31 @@ import 'package:effective/model/rooms_model.dart';
 import 'package:effective/widgets/order/final_price.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
-abstract class HomeState extends Equatable {
-  const HomeState();
+abstract class AppState extends Equatable {
+  const AppState();
 }
 
-class StartState extends HomeState {
+class StartState extends AppState {
   const StartState();
 
   @override
   List<Object> get props => [];
 }
 
-class AddedTouristState extends HomeState {
+class AddedTouristState extends AppState {
   const AddedTouristState({required this.touristsData});
   final TouristData touristsData;
   @override
   List<Object> get props => [touristsData];
 }
 
-class AddingTouristState extends HomeState {
+class AddingTouristState extends AppState {
   const AddingTouristState();
   @override
   List<Object> get props => [];
 }
 
-class InputDataTouristState extends HomeState {
+class InputDataTouristState extends AppState {
   const InputDataTouristState({
     required this.error,
     required this.inputField,
@@ -42,25 +42,18 @@ class InputDataTouristState extends HomeState {
   List<Object> get props => [error, inputField];
 }
 
-// class NoAddTouristState extends HomeState {
-//   const NoAddTouristState();
-//   @override
-//   List<Object> get props => [];
-// }
-
-class ChangeExpandedtState extends HomeState {
+class ChangeExpandedtState extends AppState {
   final int index;
   final bool isExp;
   const ChangeExpandedtState({
     required this.index,
     required this.isExp,
   });
-
   @override
   List<Object> get props => [index, isExp];
 }
 
-class GetRoomsState extends HomeState {
+class GetRoomsState extends AppState {
   const GetRoomsState({
     required this.listRooms,
   });
@@ -69,7 +62,7 @@ class GetRoomsState extends HomeState {
   List<Object> get props => [listRooms];
 }
 
-class GetRoomState extends HomeState {
+class GetRoomState extends AppState {
   const GetRoomState({
     required this.finalPrice,
     required this.roomModel,
@@ -80,7 +73,7 @@ class GetRoomState extends HomeState {
   List<Object> get props => [roomModel, finalPrice];
 }
 
-class GetHotelState extends HomeState {
+class GetHotelState extends AppState {
   final HotelModel hotelModel;
   const GetHotelState({
     required this.hotelModel,
@@ -90,7 +83,7 @@ class GetHotelState extends HomeState {
   List<Object> get props => [hotelModel];
 }
 
-class EditingInfoBuyerState extends HomeState {
+class EditingInfoBuyerState extends AppState {
   final String value;
   final bool errorPhone;
   final bool errorEmail;
