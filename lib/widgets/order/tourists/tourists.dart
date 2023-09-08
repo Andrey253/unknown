@@ -27,6 +27,7 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
         buildWhen: (previous, current) => [
               ChangeExpandedtState,
               AddedTouristState,
+              EditingInfoBuyerState
             ].contains(current.runtimeType),
         builder: (context, state) {
           final list = block.repository.touristsData;

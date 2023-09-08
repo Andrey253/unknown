@@ -80,11 +80,13 @@ class AppBlock extends Cubit<AppState> {
     List<List<String>> errors = [];
     if (repository.phoneBuyerController.text.isEmpty) {
       errors.add(['Телефон покупателя', 'не указан']);
+      repository.phoneBuyerError = true;
     } else if (repository.phoneBuyerError) {
       errors.add(['Телефон покупателя', 'указан неверно']);
     }
     if (repository.emailBuyerController.text.isEmpty) {
       errors.add(['Email покупателя', 'не указан']);
+      repository.emailBuyerError = true;
     } else if (repository.emailBuyerError) {
       errors.add(['Email покупателя', 'указан неверно']);
     }
@@ -92,6 +94,7 @@ class AppBlock extends Cubit<AppState> {
       for (var inputField in touristData.inputField) {
         if (inputField.error || inputField.textEditingController.text.isEmpty) {
           errors.add([touristData.headerText, inputField.nameField]);
+          inputField.error = true;
         }
       }
     }
@@ -99,62 +102,29 @@ class AppBlock extends Cubit<AppState> {
     if (errors.isEmpty) {
       Navigator.pushNamed(context, FinishWidget.id);
     } else {
-      showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-                title: const Center(child: Text('Неверно заполнены поля')),
-                content: SizedBox(
-                  height: MediaQuery.of(ctx).size.height * 0.5,
-                  width: MediaQuery.of(ctx).size.width * 0.8,
-                  child: ListView(
-                      children: errors
-                          .map((e) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 8.0),
-                                child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(ctx).size.width * 0.3,
-                                        child: Text(e[0],
-                                            maxLines: 3,
-                                            style: HotelTheme
-                                                .textStyle16_500Black),
-                                      ),
-                                      SizedBox(
-                                          width: MediaQuery.of(ctx).size.width *
-                                              0.3,
-                                          child: Text(e[1],
-                                              maxLines: 3,
-                                              style: HotelTheme
-                                                  .textStyle16_500Black))
-                                    ]),
-                              ))
-                          .toList()),
-                ),
-                actions: actionOk(ctx),
-              ));
+      for (var element in repository.touristsData) {
+        bool hasErrpr = false;
+        for (var f in element.inputField) {
+          if (f.error) hasErrpr = true;
+        }
+        if (hasErrpr) element.isExpanded = true;
+      }
+      emit(EditingInfoBuyerState(
+          listTouristData: repository.touristsData,
+          emailBuyerError: repository.emailBuyerError,
+          phoneBuyerError: repository.phoneBuyerError));
     }
   }
 
   void validateEmailBuyer(String email) {
-    if ((RegExp(r"^\w+@\w+\.\w{2,}$").hasMatch(email))) {
-      repository.emailBuyerError = false;
+    repository.emailBuyerError = !RegExp(r"^\w+@\w+\.\w{2,}$").hasMatch(email);
+    if (!repository.emailBuyerError) {
+      repository.emailBuyer = email;
       emit(EditingInfoBuyerState(
-          value: email,
-          errorPhone: repository.phoneBuyerError,
-          errorEmail: repository.emailBuyerError));
-    } else {
-      repository.emailBuyerError = true;
-      emit(EditingInfoBuyerState(
-          value: email,
-          errorPhone: repository.phoneBuyerError,
-          errorEmail: repository.emailBuyerError));
+          listTouristData: repository.touristsData,
+          emailBuyerError: repository.emailBuyerError,
+          phoneBuyerError: repository.phoneBuyerError));
     }
-    repository.emailBuyer = email;
   }
 
   void onChangePhoneBuer(String s) {
@@ -184,29 +154,48 @@ class AppBlock extends Cubit<AppState> {
     repository.phoneBuyer = phone;
     repository.phoneBuyerController.text = mask;
     validatePhone(mask);
+    onSubmittedPhoneBuyer('');
     repository.buferPhoneBuyer = mask;
     repository.phoneBuyerController.selection =
         TextSelection.fromPosition(TextPosition(offset: section));
   }
 
-  void validatePhone(String s) {
-    if ((RegExp(r"^\d{3}\)\s\d{3}\-\d\d\-\d\d$").hasMatch(s))) {
-      repository.phoneBuyerError = false;
-      emit(EditingInfoBuyerState(
-          value: s,
-          errorPhone: repository.phoneBuyerError,
-          errorEmail: repository.emailBuyerError));
-    } else {
-      repository.phoneBuyerError = true;
-      emit(EditingInfoBuyerState(
-          value: s,
-          errorPhone: repository.phoneBuyerError,
-          errorEmail: repository.emailBuyerError));
-    }
-  }
+  void validatePhone(String s) => repository.phoneBuyerError =
+      !RegExp(r"^\d{3}\)\s\d{3}\-\d\d\-\d\d$").hasMatch(s);
 
   finish(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     startingGetHotel();
+  }
+
+  void onTapPhoneBuer() {
+    if (repository.phoneBuyerController.text.isEmpty) {
+      repository.phoneBuyerController.text = '***) *** - ** - **';
+      repository.phoneBuyerController.selection =
+          TextSelection.fromPosition(const TextPosition(offset: 0));
+      validatePhone(repository.phoneBuyerController.text);
+    }
+  }
+
+  void onSubmittedPhoneBuyer(String value) {
+    if (repository.phoneBuyerController.text.isEmpty) {
+      repository.phoneBuyerError = true;
+    }
+    emit(EditingInfoBuyerState(
+        listTouristData: repository.touristsData,
+        emailBuyerError: repository.emailBuyerError,
+        phoneBuyerError: repository.phoneBuyerError));
+  }
+
+  void onSubmittedEmailBuyer(String value) {
+    validateEmailBuyer(value);
+    if (repository.emailBuyerController.text.isEmpty) {
+      repository.emailBuyerError = true;
+    }
+
+    emit(EditingInfoBuyerState(
+        listTouristData: repository.touristsData,
+        emailBuyerError: repository.emailBuyerError,
+        phoneBuyerError: repository.phoneBuyerError));
   }
 }

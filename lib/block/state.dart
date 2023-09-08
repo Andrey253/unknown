@@ -84,15 +84,16 @@ class GetHotelState extends AppState {
 }
 
 class EditingInfoBuyerState extends AppState {
-  final String value;
-  final bool errorPhone;
-  final bool errorEmail;
+  final List<TouristData> listTouristData;
+  final bool emailBuyerError;
+  final bool phoneBuyerError;
+
   const EditingInfoBuyerState({
-    required this.value,
-    required this.errorPhone,
-    required this.errorEmail,
+    required this.listTouristData,
+    required this.emailBuyerError,
+    required this.phoneBuyerError,
   });
 
   @override
-  List<Object> get props => [value, errorEmail, errorPhone];
+  List<Object> get props => [listTouristData, emailBuyerError, phoneBuyerError];
 }

@@ -15,7 +15,8 @@ class RoomItemWidget extends StatelessWidget {
   final RoomsModel roomsModel;
   @override
   Widget build(BuildContext context) {
-    return MyContainer(padding: 16.0,
+    return MyContainer(
+      padding: 16.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,11 +26,8 @@ class RoomItemWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 6),
             child: Text(
               roomsModel.name,
-              style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
+              maxLines: 10,
+              style: HotelTheme.textStyle22_500Black,
             ),
           ),
           Padding(
@@ -42,7 +40,8 @@ class RoomItemWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Text(
                             e,
-                            style: HotelTheme.textStyle16_500Grey,maxLines: 10,
+                            style: HotelTheme.textStyle16_500Grey,
+                            maxLines: 10,
                           ),
                         ))
                     .toList(),
@@ -57,12 +56,12 @@ class RoomItemWidget extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
-                children:  [
+                children: [
                   Text(
                     "Подробнее о номере",
                     style: TextStyle(
                         overflow: TextOverflow.ellipsis,
-                        color:  HotelTheme.buttonBackgroundColor,
+                        color: HotelTheme.buttonBackgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),

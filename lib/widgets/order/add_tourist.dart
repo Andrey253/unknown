@@ -39,7 +39,7 @@ class AddTouristWidget extends StatelessWidget {
                           icon: const Icon(
                             Icons.add_box,
                             color: Color(0xFF0D72FF),
-                            size: 36,
+                            size: 40,
                           ),
                         )
                       ])));

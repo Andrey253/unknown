@@ -16,18 +16,20 @@ class Repository {
   List<RoomsModel> listRooms = [];
   TextEditingController phoneBuyerController = TextEditingController();
   TextEditingController emailBuyerController = TextEditingController();
+  FocusNode phoneFocusNode = FocusNode();
+  FocusNode emailFocusNode = FocusNode();
 
   RoomModel? roomModel;
 
-  String? phoneBuyer;
-  String? emailBuyer;
+  String phoneBuyer='';
+  String emailBuyer='';
   String buferPhoneBuyer = '';
 
   List<TouristData> touristsData = [];
   List<FinalPrice> finalPrices = [];
 
-  bool emailBuyerError = true;
-  bool phoneBuyerError = true;
+  bool emailBuyerError = false;
+  bool phoneBuyerError = false;
   
   int maxTourists = 9;
 
@@ -43,37 +45,37 @@ class Repository {
             regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$", unicode: true),
             textEditingController: TextEditingController(),
             nameField: 'Имя',
-            error: true,
+            error: false,
             hintText: 'Минимум 2 символа не более 20'),
         InputField(
             regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Фамилия',
-            error: true,
+            error: false,
             hintText: 'Минимум 2 символа не более 20'),
         InputField(
             regExp: RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$"),
             textEditingController: TextEditingController(),
             nameField: 'Дата рождения',
-            error: true,
+            error: false,
             hintText: '**.**.****'),
         InputField(
             regExp: RegExp(r"^[a-zA-Zа-яА-Я]{4,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Гражданство',
-            error: true,
+            error: false,
             hintText: 'Минимум 4 символа не более 20'),
         InputField(
             regExp: RegExp(r"\w{6,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Номер загранпаспорта',
-            error: true,
+            error: false,
             hintText: 'Минимум 6 символов не более 20'),
         InputField(
             regExp: RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$"),
             textEditingController: TextEditingController(),
             nameField: 'Срок действия загранпаспорта',
-            error: true,
+            error: false,
             hintText: '**.**.****'),
       ],
     );

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class TouristData {
@@ -11,6 +12,19 @@ class TouristData {
     required this.headerText,
     required this.inputField,
   });
+
+  @override
+  bool operator ==(covariant TouristData other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.isExpanded == isExpanded &&
+      other.headerText == headerText &&
+      listEquals(other.inputField, inputField);
+  }
+
+  @override
+  int get hashCode => isExpanded.hashCode ^ headerText.hashCode ^ inputField.hashCode;
 }
 
 class InputField {
@@ -18,6 +32,7 @@ class InputField {
   String nameField;
   RegExp regExp;
   bool error;
+  
 
   String hintText;
   InputField({
