@@ -12,16 +12,17 @@ class TouristDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final block = context.read<AppBlock>();
-    return BlocBuilder<AppBlock, AppState>(
-        buildWhen: (previous, current) => current is InputDataTouristState,
-        builder: (context, state) => ListView(
-            primary: false,
-            shrinkWrap: true,
-            children: expansionPanelData.inputField
-                .map(
-                  (e) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: TextField(
+    return ListView(
+        primary: false,
+        shrinkWrap: true,
+        children: expansionPanelData.inputField
+            .map((e) => Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
+                  child: BlocBuilder<AppBlock, AppState>(
+                    buildWhen: (previous, current) =>
+                        current is InputDataTouristState,
+                    builder: (context, state) => TextField(
                         style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -44,7 +45,7 @@ class TouristDataWidget extends StatelessWidget {
                               )),
                         )),
                   ),
-                )
-                .toList()));
+                ))
+            .toList());
   }
 }

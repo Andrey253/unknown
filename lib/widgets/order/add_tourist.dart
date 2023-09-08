@@ -14,7 +14,7 @@ class AddTouristWidget extends StatelessWidget {
     return MyContainer(
         padding: 6.0,
         child: BlocBuilder<AppBlock, AppState>(
-            buildWhen: (previous, current) => current is AddedTouristState,
+            buildWhen: (previous, current) => current is TouristState,
             builder: (context, state) => block.repository.touristsData.length >
                     block.repository.maxTourists
                 ? Padding(

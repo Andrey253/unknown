@@ -25,8 +25,8 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppBlock, AppState>(
         buildWhen: (previous, current) => [
-              ChangeExpandedtState,
-              AddedTouristState,
+              // ChangeExpandedtState,
+              TouristState,
               EditingInfoBuyerState
             ].contains(current.runtimeType),
         builder: (context, state) {
@@ -48,7 +48,7 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
                         padding: 6.0,
                         child: ExpansionPanelListCustom(
                             expansionCallback: (panelIndex, isExpanded) => block
-                                .changeEpandedListTourist(index, isExpanded),
+                                .changeExpandedListTourist(index, isExpanded),
                             children: [
                               ExpansionPanelCustom(
                                   isExpanded: list[index].isExpanded,

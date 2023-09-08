@@ -52,10 +52,10 @@ class AppBlock extends Cubit<AppState> {
 
   addTourist(BuildContext context) {
     repository.allTouristsNoExpanded();
-    emit(const AddingTouristState());
+    emit(const StartState());
     final touristData = repository.addTourist();
     if (touristData != null) {
-      emit(AddedTouristState(touristsData: touristData));
+      emit(TouristState(touristsData: touristData));
     } else {
       showDialog(
           context: context,
@@ -67,9 +67,10 @@ class AppBlock extends Cubit<AppState> {
     }
   }
 
-  changeEpandedListTourist(int panelIndex, bool isExpanded) {
+  changeExpandedListTourist(int panelIndex, bool isExpanded) {
+    emit(StartState());
     repository.touristsData[panelIndex].isExpanded = !isExpanded;
-    emit(ChangeExpandedtState(index: panelIndex, isExp: isExpanded));
+    emit(TouristState(touristsData: repository.touristsData[panelIndex]));
   }
 
   checkErrorTouristFields(String s, InputField inputField) {
@@ -109,39 +110,38 @@ class AppBlock extends Cubit<AppState> {
   }
 
   hotelOrder(BuildContext context) {
-    List<List<String>> errors = [];
+    List<List<String>> errorsTourist = [];
+    List<List<String>> errorsBuyer = [];
     if (repository.phoneBuyerController.text.isEmpty) {
-      errors.add(['Телефон покупателя', 'не указан']);
+      errorsBuyer.add(['Телефон покупателя', 'не указан']);
       repository.phoneBuyerError = true;
     } else if (repository.phoneBuyerError) {
-      errors.add(['Телефон покупателя', 'указан неверно']);
+      errorsBuyer.add(['Телефон покупателя', 'указан неверно']);
     }
     if (repository.emailBuyerController.text.isEmpty) {
-      errors.add(['Email покупателя', 'не указан']);
+      errorsBuyer.add(['Email покупателя', 'не указан']);
       repository.emailBuyerError = true;
     } else if (repository.emailBuyerError) {
-      errors.add(['Email покупателя', 'указан неверно']);
+      errorsBuyer.add(['Email покупателя', 'указан неверно']);
     }
     for (var touristData in repository.touristsData) {
       for (var inputField in touristData.inputField) {
         if (inputField.error || inputField.textEditingController.text.isEmpty) {
-          errors.add([touristData.headerText, inputField.nameField]);
+          errorsTourist.add([touristData.headerText, inputField.nameField]);
           inputField.error = true;
+          touristData.isExpanded = true;
+          emit(InputDataTouristState(error: true, inputField: inputField));
         }
       }
     }
 
-    if (errors.isEmpty) {
+    if (errorsTourist.isEmpty && errorsBuyer.isEmpty) {
       generateOrderNumber();
       Navigator.pushNamed(context, FinishWidget.id);
     } else {
-      for (var element in repository.touristsData) {
-        bool hasErrpr = false;
-        for (var f in element.inputField) {
-          if (f.error) hasErrpr = true;
-        }
-        if (hasErrpr) element.isExpanded = true;
-      }
+      print('teg ');
+
+      // emit(StartState());
       emit(EditingInfoBuyerState(
           listTouristData: repository.touristsData,
           emailBuyerError: repository.emailBuyerError,

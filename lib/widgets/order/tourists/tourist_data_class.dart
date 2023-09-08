@@ -42,4 +42,25 @@ class InputField {
     required this.error,
     required this.hintText,
   });
+
+  @override
+  bool operator ==(covariant InputField other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.textEditingController == textEditingController &&
+      other.nameField == nameField &&
+      other.regExp == regExp &&
+      other.error == error &&
+      other.hintText == hintText;
+  }
+
+  @override
+  int get hashCode {
+    return textEditingController.hashCode ^
+      nameField.hashCode ^
+      regExp.hashCode ^
+      error.hashCode ^
+      hintText.hashCode;
+  }
 }

@@ -18,17 +18,11 @@ class StartState extends AppState {
   List<Object> get props => [];
 }
 
-class AddedTouristState extends AppState {
-  const AddedTouristState({required this.touristsData});
+class TouristState extends AppState {
+  const TouristState({required this.touristsData});
   final TouristData touristsData;
   @override
   List<Object> get props => [touristsData];
-}
-
-class AddingTouristState extends AppState {
-  const AddingTouristState();
-  @override
-  List<Object> get props => [];
 }
 
 class InputDataTouristState extends AppState {
@@ -42,16 +36,16 @@ class InputDataTouristState extends AppState {
   List<Object> get props => [error, inputField];
 }
 
-class ChangeExpandedtState extends AppState {
-  final int index;
-  final bool isExp;
-  const ChangeExpandedtState({
-    required this.index,
-    required this.isExp,
-  });
-  @override
-  List<Object> get props => [index, isExp];
-}
+// class ChangeExpandedtState extends AppState {
+//   final int index;
+//   final bool isExp;
+//   const ChangeExpandedtState({
+//     required this.index,
+//     required this.isExp,
+//   });
+//   @override
+//   List<Object> get props => [index, isExp];
+// }
 
 class GetRoomsState extends AppState {
   const GetRoomsState({
