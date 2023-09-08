@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:effective/block/block_help.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/model/hotel_model.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,7 @@ class RatingWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            "от ${hotelModel.minimalPrice}",
+            "от ${spaceSeparateNumbersHelp(hotelModel.minimalPrice)}",
             style: const TextStyle(
                 textBaseline: TextBaseline.ideographic,
                 overflow: TextOverflow.ellipsis,

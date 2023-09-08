@@ -35,7 +35,7 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
               0,
               (previousValue, element) =>
                   previousValue + (element.isExpanded ? 1 : 0));
-          final height = 79.0 * length + isExpandewd * 402;
+          final height = 78.0 * length + isExpandewd * 402;
           return SizedBox(
               height: height,
               child: ListView.builder(
@@ -54,7 +54,7 @@ class _TestTouristsWidgetState extends State<TestTouristsWidget> {
                                   headerBuilder: (context, isExpanded) =>
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 12.0),
+                                            vertical: 12.0, horizontal: 10),
                                         child: Text(
                                           list[index].headerText,
                                           style: const TextStyle(

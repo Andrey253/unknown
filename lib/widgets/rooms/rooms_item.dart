@@ -1,3 +1,4 @@
+import 'package:effective/block/block_help.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/class_helpers/container_circle_border.dart';
 import 'package:effective/model/rooms_model.dart';
@@ -41,7 +42,7 @@ class RoomItemWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Text(
                             e,
-                            style: HotelTheme.textStyle16_500Grey,
+                            style: HotelTheme.textStyle16_500Grey,maxLines: 10,
                           ),
                         ))
                     .toList(),
@@ -78,7 +79,7 @@ class RoomItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "${roomsModel.price} р",
+                  "${spaceSeparateNumbersHelp(roomsModel.price)} р",
                   style: const TextStyle(
                       textBaseline: TextBaseline.ideographic,
                       overflow: TextOverflow.ellipsis,

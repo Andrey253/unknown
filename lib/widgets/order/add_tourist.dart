@@ -12,13 +12,13 @@ class AddTouristWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<AppBlock>();
     return MyContainer(
-        padding: 16.0,
+        padding: 6.0,
         child: BlocBuilder<AppBlock, AppState>(
             buildWhen: (previous, current) => current is AddedTouristState,
             builder: (context, state) => block.repository.touristsData.length >
                     block.repository.maxTourists
                 ? Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 12),
+                    padding: const EdgeInsets.only(top: 14.0, bottom: 18),
                     child: Text(
                         'Максимум ${block.repository.maxTourists + 1} туристов',
                         textAlign: TextAlign.center,
@@ -28,11 +28,13 @@ class AddTouristWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                         const Padding(
-                          padding: EdgeInsets.only(top: 8.0, bottom: 12),
+                          padding:
+                              EdgeInsets.only(top: 14.0, bottom: 18, left: 10),
                           child: Text('Добавить туриста',
                               style: HotelTheme.textStyle22_500Black),
                         ),
                         IconButton(
+                          padding: EdgeInsets.zero,
                           onPressed: () => block.addTourist(context),
                           icon: const Icon(
                             Icons.add_box,
