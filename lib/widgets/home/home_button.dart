@@ -14,10 +14,10 @@ class HomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
     return BlocBuilder<HomeBloc, HomeState>(
-        buildWhen: (previous, current) =>
-            current is GetHotelState || current is StartState,
-        builder: (context, state) => state is GetHotelState
-            ? Container(
+        builder: (context, state) => block.repository.hotelModel == null ||
+                state is StartState
+            ? const SizedBox.shrink()
+            : Container(
                 height: 88,
                 clipBehavior: Clip.hardEdge,
                 decoration: const BoxDecoration(
@@ -33,8 +33,6 @@ class HomeButton extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 11, 88, 255),
-                            //TODO Цвет в фигме не определяется
-                            //TODO переделать на кнопку
                             borderRadius:
                                 BorderRadius.all(Radius.circular(15))),
                         child: Center(
@@ -62,7 +60,6 @@ class HomeButton extends StatelessWidget {
                     const SizedBox(height: 6),
                   ],
                 ),
-              )
-            : const SizedBox.shrink());
+              ));
   }
 }

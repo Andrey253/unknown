@@ -11,7 +11,7 @@ class DataOrdersWidget extends StatelessWidget {
   final RoomModel roomModel;
   @override
   Widget build(BuildContext context) {
-    return MyContainer(
+    return MyContainer(padding: 16.0,
         child: Table(
       children: [
         TableRow(children: [

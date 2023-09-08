@@ -24,7 +24,7 @@ class _TouristsWidgetState extends State<TouristsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MyContainer(
+    return MyContainer(padding: 16.0,
         child: BlocBuilder<HomeBloc, HomeState>(
             buildWhen: (previous, current) => [
                   ChangeExpandedtState,

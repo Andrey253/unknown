@@ -10,7 +10,7 @@ class AddTouristWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
-    return MyContainer(
+    return MyContainer(padding: 16.0,
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       const Padding(

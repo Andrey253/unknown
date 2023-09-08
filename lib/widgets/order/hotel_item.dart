@@ -11,11 +11,12 @@ class BlokHotel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyContainer(
+        padding: 16.0,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      _rating(roomModel),
-      _adresShort(roomModel),
-      _adresLong(roomModel),
-    ]));
+          _rating(roomModel),
+          _adresShort(roomModel),
+          _adresLong(roomModel),
+        ]));
   }
 
   Widget _rating(RoomModel hotelModel) {
@@ -24,7 +25,7 @@ class BlokHotel extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: const BoxDecoration(
-            // color: Color(0x33FFC700),
+            color: Color(0x33FFC700),
             borderRadius: BorderRadius.all(Radius.circular(5))),
         clipBehavior: Clip.hardEdge,
         child: Row(

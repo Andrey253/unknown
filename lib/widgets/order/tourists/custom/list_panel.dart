@@ -75,7 +75,7 @@ class ExpansionPanelCustom {
     this.isExpanded = false,
     this.canTapOnHeader = false,
     this.backgroundColor,
-  }) ;
+  });
 
   /// The widget builder that builds the expansion panels' header.
   final ExpansionPanelHeaderBuilder headerBuilder;
@@ -157,7 +157,7 @@ class ExpansionPanelListCustom extends StatefulWidget {
     this.animationDuration = kThemeAnimationDuration,
     this.expandedHeaderPadding = _kPanelHeaderExpandedDefaultPadding,
     this.dividerColor,
-    this.elevation = 2,
+    this.elevation = 0,
   })  : _allowOnlyOnePanelOpen = false,
         initialOpenPanelValue = null;
 
@@ -182,27 +182,20 @@ class ExpansionPanelListCustom extends StatefulWidget {
     this.initialOpenPanelValue,
     this.expandedHeaderPadding = _kPanelHeaderExpandedDefaultPadding,
     this.dividerColor,
-    this.elevation = 2,
-  })  :
-        _allowOnlyOnePanelOpen = true;
-
+    this.elevation = 0,
+  }) : _allowOnlyOnePanelOpen = true;
 
   final List<ExpansionPanelCustom> children;
 
-
   final ExpansionPanelCallback? expansionCallback;
 
-
   final Duration animationDuration;
-
 
   final bool _allowOnlyOnePanelOpen;
 
   final Object? initialOpenPanelValue;
 
-
   final EdgeInsets expandedHeaderPadding;
-
 
   final Color? dividerColor;
 

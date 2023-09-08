@@ -95,7 +95,7 @@ class Repository {
   }
 
   TouristData? addTourist() {
-    if (touristsData.length > 2) return null;
+    if (touristsData.length > 9) return null;
     final tourist = initTourist();
     touristsData.add(tourist);
     return tourist;

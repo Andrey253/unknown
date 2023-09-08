@@ -7,6 +7,7 @@ import 'package:effective/widgets/order/button_order.dart';
 import 'package:effective/widgets/order/buyer_info.dart';
 import 'package:effective/widgets/order/final_price.dart';
 import 'package:effective/widgets/order/hotel_item.dart';
+import 'package:effective/widgets/order/tourists/test_panel.dart';
 import 'package:effective/widgets/order/tourists/tourists_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +29,7 @@ class RoomOrderWidget extends StatelessWidget {
                       BlokHotel(roomModel: state.roomModel),
                       DataOrdersWidget(roomModel: state.roomModel),
                       const BuyerHotel(),
-                      const TouristsWidget(),
+                      const TestTouristsWidget(),
                       const AddTouristWidget(),
                       FinalPriceWidget(
                         roomModel: state.roomModel,

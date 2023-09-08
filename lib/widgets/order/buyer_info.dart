@@ -13,7 +13,7 @@ class BuyerHotel extends StatelessWidget {
     final block = context.read<HomeBloc>();
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) => current is EditingInfoBuyerState,
-        builder: (context, state) => MyContainer(
+        builder: (context, state) => MyContainer(padding: 16.0,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

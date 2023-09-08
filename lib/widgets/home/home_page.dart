@@ -1,6 +1,6 @@
 import 'package:effective/widgets/home/home_button.dart';
 import 'package:effective/widgets/home/home_one/home_one.dart';
-import 'package:effective/widgets/home/home_two.dart';
+import 'package:effective/widgets/home/hotel_about_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

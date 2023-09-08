@@ -14,7 +14,7 @@ class RoomItemWidget extends StatelessWidget {
   final RoomsModel roomsModel;
   @override
   Widget build(BuildContext context) {
-    return MyContainer(
+    return MyContainer(padding: 16.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

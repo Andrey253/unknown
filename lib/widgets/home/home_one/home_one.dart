@@ -15,18 +15,20 @@ class HomeOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
-        buildWhen: (previous, current) => current is GetHotelState ||current is StartState, 
+        // buildWhen: (previous, current) => current is GetHotelState ||current is StartState,
         builder: (context, state) {
-          final hotelModel = state is GetHotelState ? state.hotelModel : null;
-          return MyContainer(
-            child: Column(
-              children: [
-                const NameHotel(),
-                MyCustomCarousel(listImages: hotelModel?.imageUrls),
-                RatingWidget(hotelModel: hotelModel)
-              ],
-            ),
-          );
-        });
+      final hotelModel = context.read<HomeBloc>().repository.hotelModel;
+      return MyContainer(
+        padding: 16.0,
+        child: Column(
+          children: [
+            const NameHotel(),
+            MyCustomCarousel(
+                listImages: state is StartState ? null : hotelModel?.imageUrls),
+            RatingWidget(hotelModel:state is StartState ? null : hotelModel)
+          ],
+        ),
+      );
+    });
   }
 }
