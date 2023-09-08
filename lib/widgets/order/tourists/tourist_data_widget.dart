@@ -12,36 +12,39 @@ class TouristDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final block = context.read<AppBlock>();
-    return ListView(
-        primary: false,
-        shrinkWrap: true,
-        children: expansionPanelData.inputField
-            .map(
-              (e) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: TextField(
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
-                    controller: e.textEditingController,
-                    onChanged: (s) => block.checkErrorTouristFields(s, e),
-                    decoration: InputDecoration(
-                      errorStyle: HotelTheme.textStyle16_400Grey,
-                      labelText: e.nameField,
-                      hintText: e.hintText,
-                      filled: true,
-                      fillColor: e.error
-                          ? HotelTheme.errorColor
-                          : HotelTheme.scaffoldBackgroundColor,
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                            color: HotelTheme.greyColor,
-                          )),
-                    )),
-              ),
-            )
-            .toList());
+    return BlocBuilder<AppBlock, AppState>(
+        buildWhen: (previous, current) => current is InputDataTouristState,
+        builder: (context, state) => ListView(
+            primary: false,
+            shrinkWrap: true,
+            children: expansionPanelData.inputField
+                .map(
+                  (e) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: TextField(
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400),
+                        controller: e.textEditingController,
+                        onChanged: (s) => block.checkErrorTouristFields(s, e),
+                        decoration: InputDecoration(
+                          errorStyle: HotelTheme.textStyle16_400Grey,
+                          labelText: e.nameField,
+                          hintText: e.hintText,
+                          filled: true,
+                          fillColor: e.error
+                              ? HotelTheme.errorColor
+                              : HotelTheme.scaffoldBackgroundColor,
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0)),
+                              borderSide: BorderSide(
+                                color: HotelTheme.greyColor,
+                              )),
+                        )),
+                  ),
+                )
+                .toList()));
   }
 }

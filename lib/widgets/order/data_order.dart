@@ -42,8 +42,11 @@ class DataOrdersWidget extends StatelessWidget {
                 child: Text('Даты',
                     style: HotelTheme.textStyle16_400Grey, maxLines: 10),
               ),
-              Text('${roomModel.tourDateStart} - ${roomModel.tourDateStop}',
-                  style: HotelTheme.textStyle16_400Black, maxLines: 10)
+              Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text('${roomModel.tourDateStart} - ${roomModel.tourDateStop}',
+                    style: HotelTheme.textStyle16_400Black, maxLines: 10),
+              )
             ]),
             TableRow(children: [
               //four

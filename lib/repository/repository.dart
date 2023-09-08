@@ -24,6 +24,7 @@ class Repository {
   String phoneBuyer='';
   String emailBuyer='';
   String buferPhoneBuyer = '';
+  int orderNumber =0;
 
   List<TouristData> touristsData = [];
   List<FinalPrice> finalPrices = [];

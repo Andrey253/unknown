@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -71,9 +73,39 @@ class AppBlock extends Cubit<AppState> {
   }
 
   checkErrorTouristFields(String s, InputField inputField) {
-    final error = !inputField.regExp.hasMatch(s);
-    inputField.error = error;
-    emit(InputDataTouristState(error: error, inputField: inputField));
+    if (RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$").hasMatch(s)) {
+      final list = s.split('.');
+      try {
+        final data = DateTime(
+          int.parse(list[2]),
+          int.parse(list[1]),
+          int.parse(list[0]),
+        );
+        if (int.parse(list[0]) != data.day ||
+            int.parse(list[1]) != data.month ||
+            int.parse(list[2]) != data.year) {
+          throw Exception();
+        }
+        inputField.error = false;
+        inputField.textEditingController.text =
+            '${data.day.toString().padLeft(2, '0')}.${data.month.toString().padLeft(2, '0')}.${data.year.toString().padLeft(4, '0')}';
+        inputField.textEditingController.selection = TextSelection.fromPosition(
+            TextPosition(offset: inputField.textEditingController.text.length));
+        //при правильном формате даты отображает сразу отсутствие ошибки
+        emit(InputDataTouristState(error: false, inputField: inputField));
+      } on Exception {
+        inputField.error = true;
+        // при не правильном формате введеной даты покажет ошибку сразу
+        // emit(InputDataTouristState(error: true, inputField: inputField));
+      }
+    } else {
+      final error = !inputField.regExp.hasMatch(s);
+      if (!error) {
+        inputField.error = error;
+        emit(InputDataTouristState(error: error, inputField: inputField));
+      }
+      inputField.error = error;
+    }
   }
 
   hotelOrder(BuildContext context) {
@@ -100,6 +132,7 @@ class AppBlock extends Cubit<AppState> {
     }
 
     if (errors.isEmpty) {
+      generateOrderNumber();
       Navigator.pushNamed(context, FinishWidget.id);
     } else {
       for (var element in repository.touristsData) {
@@ -154,7 +187,12 @@ class AppBlock extends Cubit<AppState> {
     repository.phoneBuyer = phone;
     repository.phoneBuyerController.text = mask;
     validatePhone(mask);
-    onSubmittedPhoneBuyer('');
+    if (!repository.phoneBuyerError) {
+      emit(EditingInfoBuyerState(
+          listTouristData: repository.touristsData,
+          emailBuyerError: repository.emailBuyerError,
+          phoneBuyerError: repository.phoneBuyerError));
+    }
     repository.buferPhoneBuyer = mask;
     repository.phoneBuyerController.selection =
         TextSelection.fromPosition(TextPosition(offset: section));
@@ -178,13 +216,14 @@ class AppBlock extends Cubit<AppState> {
   }
 
   void onSubmittedPhoneBuyer(String value) {
-    if (repository.phoneBuyerController.text.isEmpty) {
+    if (repository.phoneBuyerController.text.isEmpty ||
+        repository.phoneBuyerError) {
       repository.phoneBuyerError = true;
+      emit(EditingInfoBuyerState(
+          listTouristData: repository.touristsData,
+          emailBuyerError: repository.emailBuyerError,
+          phoneBuyerError: repository.phoneBuyerError));
     }
-    emit(EditingInfoBuyerState(
-        listTouristData: repository.touristsData,
-        emailBuyerError: repository.emailBuyerError,
-        phoneBuyerError: repository.phoneBuyerError));
   }
 
   void onSubmittedEmailBuyer(String value) {
@@ -197,5 +236,9 @@ class AppBlock extends Cubit<AppState> {
         listTouristData: repository.touristsData,
         emailBuyerError: repository.emailBuyerError,
         phoneBuyerError: repository.phoneBuyerError));
+  }
+
+  void generateOrderNumber() {
+    repository.orderNumber = Random().nextInt(999999);
   }
 }
