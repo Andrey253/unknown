@@ -77,23 +77,27 @@ class RatingWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(
-            "от ${spaceSeparateNumbersHelp(hotelModel.minimalPrice)}",
-            style: const TextStyle(
-                textBaseline: TextBaseline.ideographic,
-                overflow: TextOverflow.ellipsis,
-                color: Colors.black,
-                fontSize: 30,
-                fontWeight: FontWeight.w600),
+          Expanded(
+            child: Text(
+              "от ${spaceSeparateNumbersHelp(hotelModel.minimalPrice)}",
+              style: const TextStyle(
+                  textBaseline: TextBaseline.ideographic,
+                  overflow: TextOverflow.ellipsis,
+                  color: Colors.black,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600),
+            ),
           ),
           const SizedBox(
             width: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 3),
-            child: Text(
-              hotelModel.priceForIt,
-              style: HotelTheme.textStyle16_400Grey,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 3),
+              child: Text(
+                hotelModel.priceForIt,
+                style: HotelTheme.textStyle16_400Grey,
+              ),
             ),
           ),
         ],
@@ -113,7 +117,6 @@ List<List<int>> func(List<List<int>> array) {
       result.add(element);
     }
   }
-
 
   return result;
 }

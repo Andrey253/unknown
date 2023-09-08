@@ -77,23 +77,33 @@ class RoomItemWidget extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  "${spaceSeparateNumbersHelp(roomsModel.price)} р",
-                  style: const TextStyle(
-                      textBaseline: TextBaseline.ideographic,
-                      overflow: TextOverflow.ellipsis,
-                      color: Colors.black,
-                      fontSize: 38,
-                      fontWeight: FontWeight.w600),
+                Expanded(
+                  flex: 20,
+                  child: Text(
+                    "${spaceSeparateNumbersHelp(roomsModel.price)} р",
+                    style: const TextStyle(
+                        textBaseline: TextBaseline.ideographic,
+                        overflow: TextOverflow.ellipsis,
+                        color: Colors.black,
+                        fontSize: 38,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 4,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 3),
-                  child: Text(
-                    roomsModel.pricePer,
-                    style: HotelTheme.textStyle16_400Grey,
+                Expanded(
+                  flex: 17,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 3),
+                    child: Center(
+                      child: Text(
+                        roomsModel.pricePer,
+                        style: HotelTheme.textStyle16_400Grey,
+                        maxLines: 10,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 ),
               ],
