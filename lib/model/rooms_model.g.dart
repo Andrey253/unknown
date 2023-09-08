@@ -6,12 +6,14 @@ part of 'rooms_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: unused_element
 Rooms _$RoomsFromJson(Map<String, dynamic> json) => Rooms(
       listRooms: (json['listRooms'] as List<dynamic>)
           .map((e) => RoomsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$RoomsToJson(Rooms instance) => <String, dynamic>{
       'listRooms': instance.listRooms,
     };

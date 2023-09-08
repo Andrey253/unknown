@@ -1,12 +1,12 @@
-import 'package:effective/block/home_block.dart';
+import 'package:effective/block/block.dart';
 import 'package:effective/class_helpers/app_bar.dart';
 import 'package:effective/class_helpers/buttons_app.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EndWidget extends StatelessWidget {
-  const EndWidget({super.key});
+class FinishWidget extends StatelessWidget {
+  const FinishWidget({super.key});
   static const id = '/EndWidget';
 
   @override

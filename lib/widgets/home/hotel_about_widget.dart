@@ -1,8 +1,8 @@
-import 'package:effective/block/home_block.dart';
-import 'package:effective/block/home_state.dart';
+import 'package:effective/block/block.dart';
+import 'package:effective/block/state.dart';
 import 'package:effective/class_helpers/hotel_menu.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/my_container.dart';
+import 'package:effective/class_helpers/container_circle_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
@@ -75,18 +75,18 @@ class HomeTwo extends StatelessWidget {
                               size: 24,
                               color: Colors.black,
                               icon: SvgIconData(menuHotel[index].svg)),
-                          trailing: SvgIcon(
+                          trailing: const SvgIcon(
                               color: Color(0xFF2C3035),
                               icon: SvgIconData('assets/svg/toright.svg')),
                         ),
                         separatorBuilder: (context, index) => Align(
-                          alignment: Alignment(1, 0),
+                          alignment: const Alignment(1, 0),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Container(
                               width: size.width * 0.75,
                               height: 1,
-                              color: Color(0x26828796),
+                              color: const Color(0x26828796),
                             ),
                           ),
                         ),

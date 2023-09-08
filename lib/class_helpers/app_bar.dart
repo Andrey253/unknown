@@ -4,6 +4,7 @@ import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 AppBar appBar(BuildContext context, String title) {
   return AppBar(
+    elevation: 0,
     leading: IconButton(
       padding: EdgeInsets.zero,
       onPressed: Navigator.of(context).pop,

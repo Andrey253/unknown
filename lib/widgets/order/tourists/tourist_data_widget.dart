@@ -1,5 +1,5 @@
-import 'package:effective/block/home_block.dart';
-import 'package:effective/block/home_state.dart';
+import 'package:effective/block/block.dart';
+import 'package:effective/block/state.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class TouristDataWidget extends StatelessWidget {
                           fillColor:e.error?HotelTheme.errorColor: HotelTheme.scaffoldBackgroundColor,
                           border: const OutlineInputBorder(
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(10.0)),
+                                  BorderRadius.all(Radius.circular(10.0)),
                               borderSide: BorderSide(
                                 color: HotelTheme.greyColor,
                               )),

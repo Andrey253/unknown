@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:effective/class_helpers/my_container.dart';
+import 'package:effective/class_helpers/container_circle_border.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../block/home_block.dart';
+import '../../block/block.dart';
 
 class FinalPriceWidget extends StatelessWidget {
   const FinalPriceWidget(

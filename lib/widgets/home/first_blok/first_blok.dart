@@ -1,9 +1,9 @@
-import 'package:effective/block/home_block.dart';
-import 'package:effective/block/home_state.dart';
-import 'package:effective/class_helpers/my_container.dart';
-import 'package:effective/widgets/home/home_one/custom_carousel.dart';
-import 'package:effective/widgets/home/home_one/name_hotel.dart';
-import 'package:effective/widgets/home/home_one/rating.dart';
+import 'package:effective/block/block.dart';
+import 'package:effective/block/state.dart';
+import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/widgets/home/first_blok/custom_carousel.dart';
+import 'package:effective/widgets/home/first_blok/name_hotel.dart';
+import 'package:effective/widgets/home/first_blok/rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

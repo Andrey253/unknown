@@ -1,7 +1,7 @@
 import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/my_container.dart';
+import 'package:effective/class_helpers/container_circle_border.dart';
 import 'package:effective/model/rooms_model.dart';
-import 'package:effective/widgets/home/home_one/custom_carousel.dart';
+import 'package:effective/widgets/home/first_blok/custom_carousel.dart';
 import 'package:effective/widgets/rooms/rooms_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';

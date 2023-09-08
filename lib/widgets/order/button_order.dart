@@ -1,7 +1,6 @@
-import 'package:effective/block/home_block.dart';
+import 'package:effective/block/block.dart';
 import 'package:effective/class_helpers/buttons_app.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/my_container_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,30 +11,28 @@ class ButtonOrderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
 
-    return MyContainerButton(
-      child: Column(
-        children: [
-          ButtonsApp(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 48,
-              circular: 14,
-              backgroundColor: HotelTheme.buttonBackgroundColor,
-              child: Text(
-                'Оплатить ${block.finalPrice} ₽',
-                style: HotelTheme.textStyle16_500White,
-              ),
-              onPressed: () => block.hotelOrder(context)),
-          const SizedBox(height: 10),
-          Container(
-            height: 5,
-            width: MediaQuery.of(context).size.width * 0.25,
-            decoration: const BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.all(Radius.circular(2.5))),
-          ),
-          const SizedBox(height: 6),
-        ],
-      ),
+    return Column(
+      children: [
+        ButtonsApp(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 48,
+            circular: 14,
+            backgroundColor: HotelTheme.buttonBackgroundColor,
+            child: Text(
+              'Оплатить ${block.finalPrice} ₽',
+              style: HotelTheme.textStyle16_500White,
+            ),
+            onPressed: () => block.hotelOrder(context)),
+        const SizedBox(height: 10),
+        Container(
+          height: 5,
+          width: MediaQuery.of(context).size.width * 0.25,
+          decoration: const BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.all(Radius.circular(2.5))),
+        ),
+        const SizedBox(height: 6),
+      ],
     );
   }
 }

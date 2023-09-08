@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:effective/widgets/order/final_price.dart';
 import 'package:flutter/material.dart';
-
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
@@ -51,7 +50,7 @@ class Repository {
             error: true,
             hintText: 'Минимум 2 символа не более 20'),
         InputField(
-            regExp: RegExp(r"^[123]\d\.[01]\d\.[12]\d\d\d$"),
+            regExp: RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$"),
             textEditingController: TextEditingController(),
             nameField: 'Дата рождения',
             error: true,
@@ -69,7 +68,7 @@ class Repository {
             error: true,
             hintText: 'Минимум 6 символов не более 20'),
         InputField(
-            regExp: RegExp(r"^[123]\d\.[01]\d\.[12]\d\d\d$"),
+            regExp: RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$"),
             textEditingController: TextEditingController(),
             nameField: 'Срок действия загранпаспорта',
             error: true,

@@ -112,7 +112,7 @@ List<List<int>> func(List<List<int>> array) {
       result.add(element);
     }
   }
-  print('teg $result');
+
 
   return result;
 }

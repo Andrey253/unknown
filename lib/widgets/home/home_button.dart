@@ -1,5 +1,5 @@
-import 'package:effective/block/home_block.dart';
-import 'package:effective/block/home_state.dart';
+import 'package:effective/block/block.dart';
+import 'package:effective/block/state.dart';
 import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/widgets/rooms/rooms_page.dart';
 import 'package:flutter/material.dart';
