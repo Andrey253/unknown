@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
-import 'package:effective/widgets/order/final_price.dart';
+import 'package:effective/helpers/final_price_class.dart';
 import 'package:flutter/material.dart';
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
@@ -21,17 +21,17 @@ class Repository {
 
   RoomModel? roomModel;
 
-  String phoneBuyer='';
-  String emailBuyer='';
+  String phoneBuyer = '';
+  String emailBuyer = '';
   String buferPhoneBuyer = '';
-  int orderNumber =0;
+  int orderNumber = 0;
 
   List<TouristData> touristsData = [];
   List<FinalPrice> finalPrices = [];
 
   bool emailBuyerError = false;
   bool phoneBuyerError = false;
-  
+
   int maxTourists = 9;
 
   Repository() {
@@ -82,21 +82,19 @@ class Repository {
     );
   }
 
-  String numberTourist() {
-    List<String> numbers = [
-      'Первый турист',
-      'Второй турист',
-      'Третий турист',
-      'Четвертый турист',
-      'Пятый турист',
-      'Шестой турист',
-      'Седьмой турист',
-      'Восьмой турист',
-      'Девятый турист',
-      'Десятый турист',
-    ];
-    return numbers[touristsData.length];
-  }
+  List<String> numbers = const [
+    'Первый турист',
+    'Второй турист',
+    'Третий турист',
+    'Четвертый турист',
+    'Пятый турист',
+    'Шестой турист',
+    'Седьмой турист',
+    'Восьмой турист',
+    'Девятый турист',
+    'Десятый турист',
+  ];
+  String numberTourist() => numbers[touristsData.length];
 
   TouristData? addTourist() {
     if (touristsData.length > maxTourists) return null;
@@ -119,7 +117,7 @@ class Repository {
     ];
   }
 
-  void allTouristsNoExpanded() {
+  void allTouristsNoExpande() {
     for (var element in touristsData) {
       element.isExpanded = false;
     }

@@ -1,6 +1,6 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/app_bar.dart';
+import 'package:effective/helpers/app_bar.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/widgets/rooms/rooms_item.dart';
 

@@ -1,7 +1,6 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/widgets/rooms/rooms_page.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,27 +27,19 @@ class HomeButton extends StatelessWidget {
                   children: [
                     const SizedBox(height: 12),
                     Center(
-                      child: Container(
-                        height: 48,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 11, 88, 255),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, RoomsWidget.id);
-                              block.getRooms();
-                            },
-                            child: const Text(
-                              'К выбору номера',
-                              style: HotelTheme.textStyle16_500White,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                        child: Container(
+                            height: 48,
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            decoration: const BoxDecoration(
+                                color: Color.fromARGB(255, 11, 88, 255),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15))),
+                            child: Center(
+                                child: GestureDetector(
+                                    onTap: () => block.getRooms(context),
+                                    child: const Text('К выбору номера',
+                                        style: HotelTheme
+                                            .textStyle16_500White))))),
                     const SizedBox(height: 10),
                     Container(
                       height: 5,

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 
 const double _kPanelHeaderCollapsedHeight = kMinInteractiveDimension;
@@ -37,38 +37,12 @@ class _SaltedKey<S, V> extends LocalKey {
   }
 }
 
-/// Signature for the callback that's called when an [ExpansionPanelCustom] is
-/// expanded or collapsed.
-///
-/// The position of the panel within an [ExpansionPanelListCustom] is given by
-/// [panelIndex].
 typedef ExpansionPanelCallback = void Function(int panelIndex, bool isExpanded);
 
-/// Signature for the callback that's called when the header of the
-/// [ExpansionPanelCustom] needs to rebuild.
 typedef ExpansionPanelHeaderBuilder = Widget Function(
     BuildContext context, bool isExpanded);
 
-/// A material expansion panel. It has a header and a body and can be either
-/// expanded or collapsed. The body of the panel is only visible when it is
-/// expanded.
-///
-/// {@youtube 560 315 https://www.youtube.com/watch?v=2aJZzRMziJc}
-///
-/// Expansion panels are only intended to be used as children for
-/// [ExpansionPanelListCustom].
-///
-/// See [ExpansionPanelListCustom] for a sample implementation.
-///
-/// See also:
-///
-///  * [ExpansionPanelListCustom]
-///  * <https://material.io/design/components/lists.html#types>
 class ExpansionPanelCustom {
-  /// Creates an expansion panel to be used as a child for [ExpansionPanelListCustom].
-  /// See [ExpansionPanelListCustom] for an example on how to use this widget.
-  ///
-  /// The [headerBuilder], [body], and [isExpanded] arguments must not be null.
   ExpansionPanelCustom({
     required this.headerBuilder,
     required this.body,
@@ -77,44 +51,20 @@ class ExpansionPanelCustom {
     this.backgroundColor,
   });
 
-  /// The widget builder that builds the expansion panels' header.
+
   final ExpansionPanelHeaderBuilder headerBuilder;
 
-  /// The body of the expansion panel that's displayed below the header.
-  ///
-  /// This widget is visible only when the panel is expanded.
-  final Widget body;
 
-  /// Whether the panel is expanded.
-  ///
-  /// Defaults to false.
+  final Widget body;
   final bool isExpanded;
 
-  /// Whether tapping on the panel's header will expand/collapse it.
-  ///
-  /// Defaults to false.
   final bool canTapOnHeader;
 
-  /// Defines the background color of the panel.
-  ///
-  /// Defaults to [ThemeData.cardColor].
   final Color? backgroundColor;
 }
 
-/// An expansion panel that allows for radio-like functionality.
-/// This means that at any given time, at most, one [ExpansionPanelRadio]
-/// can remain expanded.
-///
-/// A unique identifier [value] must be assigned to each panel.
-/// This identifier allows the [ExpansionPanelListCustom] to determine
-/// which [ExpansionPanelRadio] instance should be expanded.
-///
-/// See [ExpansionPanelList.radio] for a sample implementation.
 class ExpansionPanelRadio extends ExpansionPanelCustom {
-  /// An expansion panel that allows for radio functionality.
-  ///
-  /// A unique [value] must be passed into the constructor. The
-  /// [headerBuilder], [body], [value] must not be null.
+
   ExpansionPanelRadio({
     required this.value,
     required super.headerBuilder,
@@ -122,34 +72,10 @@ class ExpansionPanelRadio extends ExpansionPanelCustom {
     super.canTapOnHeader,
     super.backgroundColor,
   });
-
-  /// The value that uniquely identifies a radio panel so that the currently
-  /// selected radio panel can be identified.
   final Object value;
 }
 
-/// A material expansion panel list that lays out its children and animates
-/// expansions.
-///
-/// Note that [expansionCallback] behaves differently for [ExpansionPanelListCustom]
-/// and [ExpansionPanelList.radio].
-///
-/// {@tool dartpad}
-/// Here is a simple example of how to implement ExpansionPanelList.
-///
-/// ** See code in examples/api/lib/material/expansion_panel/expansion_panel_list.0.dart **
-/// {@end-tool}
-///
-/// See also:
-///
-///  * [ExpansionPanelCustom]
-///  * [ExpansionPanelList.radio]
-///  * <https://material.io/design/components/lists.html#types>
 class ExpansionPanelListCustom extends StatefulWidget {
-  /// Creates an expansion panel list widget. The [expansionCallback] is
-  /// triggered when an expansion panel expand/collapse button is pushed.
-  ///
-  /// The [children] and [animationDuration] arguments must not be null.
   const ExpansionPanelListCustom({
     super.key,
     this.children = const <ExpansionPanelCustom>[],
@@ -161,19 +87,6 @@ class ExpansionPanelListCustom extends StatefulWidget {
   })  : _allowOnlyOnePanelOpen = false,
         initialOpenPanelValue = null;
 
-  /// Creates a radio expansion panel list widget.
-  ///
-  /// This widget allows for at most one panel in the list to be open.
-  /// The expansion panel callback is triggered when an expansion panel
-  /// expand/collapse button is pushed. The [children] and [animationDuration]
-  /// arguments must not be null. The [children] objects must be instances
-  /// of [ExpansionPanelRadio].
-  ///
-  /// {@tool dartpad}
-  /// Here is a simple example of how to implement ExpansionPanelList.radio.
-  ///
-  /// ** See code in examples/api/lib/material/expansion_panel/expansion_panel_list.expansion_panel_list_radio.0.dart **
-  /// {@end-tool}
   const ExpansionPanelListCustom.radio({
     super.key,
     this.children = const <ExpansionPanelRadio>[],

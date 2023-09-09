@@ -1,6 +1,6 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

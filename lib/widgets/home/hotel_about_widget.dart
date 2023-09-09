@@ -1,8 +1,8 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/hotel_menu.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/helpers/hotel_menu.dart';
+import 'package:effective/helpers/hotel_theme.dart';
+import 'package:effective/helpers/container_circle_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
@@ -15,7 +15,6 @@ class HomeTwo extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final block = context.read<AppBlock>();
     return BlocBuilder<AppBlock, AppState>(
-      // buildWhen: (previous, current) => current is GetHotelState||current is StartState,
       builder: (context, state) => block.repository.hotelModel == null ||
               state is StartState
           ? const SizedBox.shrink()

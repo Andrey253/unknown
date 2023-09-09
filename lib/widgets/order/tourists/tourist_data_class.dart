@@ -16,15 +16,27 @@ class TouristData {
   @override
   bool operator ==(covariant TouristData other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.isExpanded == isExpanded &&
-      other.headerText == headerText &&
-      listEquals(other.inputField, inputField);
+
+    return other.isExpanded == isExpanded &&
+        other.headerText == headerText &&
+        listEquals(other.inputField, inputField);
   }
 
   @override
-  int get hashCode => isExpanded.hashCode ^ headerText.hashCode ^ inputField.hashCode;
+  int get hashCode =>
+      isExpanded.hashCode ^ headerText.hashCode ^ inputField.hashCode;
+
+  TouristData copyWith({
+    bool? isExpanded,
+    String? headerText,
+    List<InputField>? inputField,
+  }) {
+    return TouristData(
+      isExpanded: isExpanded ?? this.isExpanded,
+      headerText: headerText ?? this.headerText,
+      inputField: List.from(inputField ?? this.inputField),
+    );
+  }
 }
 
 class InputField {
@@ -32,7 +44,6 @@ class InputField {
   String nameField;
   RegExp regExp;
   bool error;
-  
 
   String hintText;
   InputField({
@@ -46,21 +57,20 @@ class InputField {
   @override
   bool operator ==(covariant InputField other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.textEditingController == textEditingController &&
-      other.nameField == nameField &&
-      other.regExp == regExp &&
-      other.error == error &&
-      other.hintText == hintText;
+
+    return other.textEditingController == textEditingController &&
+        other.nameField == nameField &&
+        other.regExp == regExp &&
+        other.error == error &&
+        other.hintText == hintText;
   }
 
   @override
   int get hashCode {
     return textEditingController.hashCode ^
-      nameField.hashCode ^
-      regExp.hashCode ^
-      error.hashCode ^
-      hintText.hashCode;
+        nameField.hashCode ^
+        regExp.hashCode ^
+        error.hashCode ^
+        hintText.hashCode;
   }
 }

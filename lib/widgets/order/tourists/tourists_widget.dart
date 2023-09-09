@@ -1,6 +1,6 @@
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/helpers/container_circle_border.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_widget.dart';
 import 'package:effective/widgets/order/tourists/custom/list_panel.dart';
 import 'package:flutter/material.dart';

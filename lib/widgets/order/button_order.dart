@@ -1,6 +1,7 @@
 import 'package:effective/block/block.dart';
-import 'package:effective/class_helpers/buttons_app.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/function_help.dart';
+import 'package:effective/helpers/buttons_app.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,7 @@ class ButtonOrderWidget extends StatelessWidget {
             circular: 14,
             backgroundColor: HotelTheme.buttonBackgroundColor,
             child: Text(
-              'Оплатить ${block.finalPrice} ₽',
+              'Оплатить ${spaceSeparateNumbers(block.repository.finalPrices.last.price)}',
               style: HotelTheme.textStyle16_500White,
             ),
             onPressed: () => block.hotelOrder(context)),

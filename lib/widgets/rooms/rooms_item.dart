@@ -1,6 +1,6 @@
-import 'package:effective/block/block_help.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/helpers/function_help.dart';
+import 'package:effective/helpers/hotel_theme.dart';
+import 'package:effective/helpers/container_circle_border.dart';
 import 'package:effective/model/rooms_model.dart';
 import 'package:effective/widgets/home/first_blok/custom_carousel.dart';
 import 'package:effective/widgets/rooms/rooms_button.dart';
@@ -77,23 +77,19 @@ class RoomItemWidget extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Expanded(
-                  flex: 20,
-                  child: Text(
-                    "${spaceSeparateNumbersHelp(roomsModel.price)} р",
-                    style: const TextStyle(
-                        textBaseline: TextBaseline.ideographic,
-                        overflow: TextOverflow.ellipsis,
-                        color: Colors.black,
-                        fontSize: 38,
-                        fontWeight: FontWeight.w600),
-                  ),
+                Text(
+                  spaceSeparateNumbers(roomsModel.price),
+                  style: const TextStyle(
+                      textBaseline: TextBaseline.ideographic,
+                      overflow: TextOverflow.ellipsis,
+                      color: Colors.black,
+                      fontSize: 38,
+                      fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(
                   width: 4,
                 ),
                 Expanded(
-                  flex: 17,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 3),
                     child: Center(

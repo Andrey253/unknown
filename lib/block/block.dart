@@ -1,17 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
-
+import 'package:effective/widgets/rooms/rooms_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:effective/block/state.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:effective/widgets/finish_widget/finish_widget.dart';
 import 'package:effective/widgets/order/order_page.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
-
-import 'block_help.dart';
 
 class AppBlock extends Cubit<AppState> {
   final Repository repository;
@@ -21,10 +17,6 @@ class AppBlock extends Cubit<AppState> {
     startingGetHotel();
   }
 
-  get finalPrice => spaceSeparateNumbers(repository.finalPrices.last.price);
-
-  String spaceSeparateNumbers(s) => spaceSeparateNumbersHelp(s);
-
   void startingGetHotel() async {
     emit(const StartState());
     final hotel = await repository.apiServis.getHotel();
@@ -32,7 +24,8 @@ class AppBlock extends Cubit<AppState> {
     emit(GetHotelState(hotelModel: hotel));
   }
 
-  void getRooms() async {
+  void getRooms(BuildContext context) async {
+    Navigator.pushNamed(context, RoomsWidget.id);
     emit(const StartState());
     final rooms = await repository.apiServis.getRooms();
     repository.listRooms = rooms.listRooms;
@@ -51,26 +44,18 @@ class AppBlock extends Cubit<AppState> {
   }
 
   addTourist(BuildContext context) {
-    repository.allTouristsNoExpanded();
+    repository.allTouristsNoExpande();
     emit(const StartState());
     final touristData = repository.addTourist();
     if (touristData != null) {
-      emit(TouristState(touristsData: touristData));
-    } else {
-      showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-                title: const Text('Достигнуто максимальное количество туристов',
-                    maxLines: 10, style: HotelTheme.textStyle22_500Black),
-                actions: actionOk(ctx),
-              ));
+      emit(TouristState(touristsData: touristData.copyWith()));
     }
   }
 
   changeExpandedListTourist(int panelIndex, bool isExpanded) {
-    emit(StartState());
     repository.touristsData[panelIndex].isExpanded = !isExpanded;
-    emit(TouristState(touristsData: repository.touristsData[panelIndex]));
+    emit(TouristState(
+        touristsData: repository.touristsData[panelIndex].copyWith()));
   }
 
   checkErrorTouristFields(String s, InputField inputField) {
@@ -139,9 +124,6 @@ class AppBlock extends Cubit<AppState> {
       generateOrderNumber();
       Navigator.pushNamed(context, FinishWidget.id);
     } else {
-      print('teg ');
-
-      // emit(StartState());
       emit(EditingInfoBuyerState(
           listTouristData: repository.touristsData,
           emailBuyerError: repository.emailBuyerError,

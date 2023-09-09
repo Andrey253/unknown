@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:effective/helpers/final_price_class.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/hotel_model.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:effective/model/rooms_model.dart';
-import 'package:effective/widgets/order/final_price.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 abstract class AppState extends Equatable {

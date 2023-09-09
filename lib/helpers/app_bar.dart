@@ -1,4 +1,4 @@
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 

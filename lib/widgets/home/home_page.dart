@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-//flutter build apk --split-per-abi
   @override
   Widget build(BuildContext context) {
     return SafeArea(

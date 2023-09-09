@@ -1,6 +1,5 @@
-import 'dart:math';
-import 'package:effective/block/block_help.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/function_help.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:effective/model/hotel_model.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +78,7 @@ class RatingWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              "от ${spaceSeparateNumbersHelp(hotelModel.minimalPrice)}",
+              "от ${spaceSeparateNumbers(hotelModel.minimalPrice)}",
               style: const TextStyle(
                   textBaseline: TextBaseline.ideographic,
                   overflow: TextOverflow.ellipsis,
@@ -104,19 +103,4 @@ class RatingWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-List<List<int>> func(List<List<int>> array) {
-  if (array.length < 2) return array;
-  array.sort((a, b) => a[0] - b[0]);
-  var result = [array.removeAt(0)];
-  for (var element in array) {
-    if (result.last.last >= element.first) {
-      result.last[1] = max(result.last.last, element.last);
-    } else {
-      result.add(element);
-    }
-  }
-
-  return result;
 }

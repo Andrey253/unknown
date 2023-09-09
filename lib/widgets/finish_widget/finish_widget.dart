@@ -1,7 +1,7 @@
 import 'package:effective/block/block.dart';
-import 'package:effective/class_helpers/app_bar.dart';
-import 'package:effective/class_helpers/buttons_app.dart';
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/app_bar.dart';
+import 'package:effective/helpers/buttons_app.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

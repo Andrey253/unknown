@@ -1,5 +1,5 @@
-import 'package:effective/class_helpers/hotel_theme.dart';
-import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/helpers/hotel_theme.dart';
+import 'package:effective/helpers/container_circle_border.dart';
 import 'package:effective/model/room_model.dart';
 import 'package:flutter/material.dart';
 

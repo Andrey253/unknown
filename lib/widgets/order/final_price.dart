@@ -1,11 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:effective/class_helpers/hotel_theme.dart';
+import 'package:effective/helpers/final_price_class.dart';
+import 'package:effective/helpers/function_help.dart';
+import 'package:effective/helpers/hotel_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:effective/class_helpers/container_circle_border.dart';
+import 'package:effective/helpers/container_circle_border.dart';
 import 'package:effective/model/room_model.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../block/block.dart';
 
 class FinalPriceWidget extends StatelessWidget {
   const FinalPriceWidget(
@@ -14,12 +13,11 @@ class FinalPriceWidget extends StatelessWidget {
   final List<FinalPrice> finalPrice;
   @override
   Widget build(BuildContext context) {
-    final block = context.read<AppBlock>();
     return MyContainer(
         padding: 16.0,
         child: Column(
             children: finalPrice
-                .map((e) => _row(e, block.spaceSeparateNumbers(e.price)))
+                .map((e) => _row(e, spaceSeparateNumbers(e.price)))
                 .toList()));
   }
 
@@ -40,13 +38,4 @@ class FinalPriceWidget extends StatelessWidget {
   }
 }
 
-class FinalPrice {
-  String name;
-  int price;
-  int type;
-  FinalPrice(
-    this.name,
-    this.price,
-    this.type,
-  );
-}
+
