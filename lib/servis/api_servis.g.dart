@@ -11,7 +11,6 @@ part of 'api_servis.dart';
 class _ApiServis implements ApiServis {
   _ApiServis(
     this._dio, {
-    // ignore: unused_element
     this.baseUrl,
   }) {
     baseUrl ??= 'https://run.mocky.io';
@@ -26,7 +25,7 @@ class _ApiServis implements ApiServis {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HotelModel>(Options(
       method: 'GET',
@@ -53,7 +52,7 @@ class _ApiServis implements ApiServis {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<Rooms>(Options(
       method: 'GET',
@@ -80,7 +79,7 @@ class _ApiServis implements ApiServis {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<RoomModel>(Options(
       method: 'GET',

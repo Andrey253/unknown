@@ -10,7 +10,7 @@ import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 class Repository {
   ApiServis apiServis =
-      ApiServis(Dio(BaseOptions(contentType: 'aplication/json')));
+      ApiServis(Dio());
   int indexIndicator = 0;
   HotelModel? hotelModel;
   List<RoomsModel> listRooms = [];

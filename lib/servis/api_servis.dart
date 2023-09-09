@@ -7,7 +7,10 @@ part 'api_servis.g.dart';
 
 @RestApi(baseUrl: 'https://run.mocky.io')
 abstract class ApiServis {
-  factory ApiServis(Dio dio) = _ApiServis;
+  factory ApiServis(Dio dio,{String? baseUrl}) {
+    dio.options = BaseOptions(contentType: 'aplication/json');
+    return _ApiServis(dio,baseUrl: baseUrl);
+  }
 
   @GET('/v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3')
   Future<HotelModel> getHotel();
