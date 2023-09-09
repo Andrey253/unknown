@@ -9,8 +9,7 @@ import 'package:effective/servis/api_servis.dart';
 import 'package:effective/widgets/order/tourists/tourist_data_class.dart';
 
 class Repository {
-  ApiServis apiServis =
-      ApiServis(Dio());
+  ApiServis apiServis = ApiServis(Dio());
   int indexIndicator = 0;
   HotelModel? hotelModel;
   List<RoomsModel> listRooms = [];
@@ -43,13 +42,13 @@ class Repository {
       headerText: numberTourist(),
       inputField: [
         InputField(
-            regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$", unicode: true),
+            regExp: RegExp(r"^[a-zA-Zа-яА-Я\s\-]{2,20}$", unicode: true),
             textEditingController: TextEditingController(),
             nameField: 'Имя',
             error: false,
             hintText: 'Минимум 2 символа не более 20'),
         InputField(
-            regExp: RegExp(r"^[a-zA-Zа-яА-Я]{2,20}$"),
+            regExp: RegExp(r"^[a-zA-Zа-яА-Я\s\-]{2,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Фамилия',
             error: false,
@@ -67,7 +66,7 @@ class Repository {
             error: false,
             hintText: 'Минимум 4 символа не более 20'),
         InputField(
-            regExp: RegExp(r"\w{6,20}$"),
+            regExp: RegExp(r"^[a-zA-Z0-9\s]{6,20}$"),
             textEditingController: TextEditingController(),
             nameField: 'Номер загранпаспорта',
             error: false,

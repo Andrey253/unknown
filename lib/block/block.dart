@@ -59,8 +59,9 @@ class AppBlock extends Cubit<AppState> {
   }
 
   checkErrorTouristFields(String s, InputField inputField) {
-    if (RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$").hasMatch(s)) {
-      final list = s.split('.');
+    String trimed = s.trim();
+    if (RegExp(r"^[0123]\d\.[01]\d\.[12]\d\d\d$").hasMatch(trimed)) {
+      final list = trimed.split('.');
       try {
         final data = DateTime(
           int.parse(list[2]),
@@ -85,7 +86,7 @@ class AppBlock extends Cubit<AppState> {
         // emit(InputDataTouristState(error: true, inputField: inputField));
       }
     } else {
-      final error = !inputField.regExp.hasMatch(s);
+      final error = !inputField.regExp.hasMatch(s.trim());
       if (!error) {
         inputField.error = error;
         emit(InputDataTouristState(error: error, inputField: inputField));
@@ -132,7 +133,8 @@ class AppBlock extends Cubit<AppState> {
   }
 
   void validateEmailBuyer(String email) {
-    repository.emailBuyerError = !RegExp(r"^\w+@\w+\.\w{2,}$").hasMatch(email);
+    repository.emailBuyerError =
+        !RegExp(r"(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})").hasMatch(email.trim());
     if (!repository.emailBuyerError) {
       repository.emailBuyer = email;
       emit(EditingInfoBuyerState(

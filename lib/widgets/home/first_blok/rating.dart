@@ -76,16 +76,14 @@ class RatingWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Expanded(
-            child: Text(
-              "от ${spaceSeparateNumbers(hotelModel.minimalPrice)}",
-              style: const TextStyle(
-                  textBaseline: TextBaseline.ideographic,
-                  overflow: TextOverflow.ellipsis,
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600),
-            ),
+          Text(
+            "от ${spaceSeparateNumbers(hotelModel.minimalPrice)}",
+            style: const TextStyle(
+                textBaseline: TextBaseline.ideographic,
+                overflow: TextOverflow.ellipsis,
+                color: Colors.black,
+                fontSize: 30,
+                fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             width: 10,
